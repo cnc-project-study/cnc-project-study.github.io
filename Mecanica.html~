@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  
+  <script language="javascript" type="text/javascript">
+
+var arriba;
+function subir() {
+if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
+window.scrollBy(0, -15);
+arriba = setTimeout('subir()', 10);
+}
+else clearTimeout(arriba);
+}
+  </script>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CADCNC V 1.0</title>
+
+  
+  
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+
+  
+  <meta name="description" content="Liquid Slider : The Last Responsive Content Slider You'll Ever Need">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <link rel="stylesheet" href="./css/animate.min.css">
+
+  
+  <link rel="stylesheet" href="./css/liquid-slider2.css">
+
+  
+  <meta charset="utf-8">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+
+  
+  <meta name="description" content="Liquid Slider : The Last Responsive Content Slider You'll Ever Need">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <link rel="stylesheet" href="./css/animate.min.css">
+
+  
+  <link rel="stylesheet" href="./css/liquid-slider2.css">
+
+</head><body>
+<div id="wrap">
+<div style="height: 915px;" id="header">
+<div id="topnav">
+<ul>
+  <li style="color: rgb(0, 204, 204);"><a href="index.html" title="Introducción">Introducción</a></li>
+  <li style="color: rgb(0, 204, 204); background-color: rgb(0, 204, 204);"><a href="Graficacion.html" title="Software de Graficacion">Software
+de Graficacion</a></li>
+  <li style="color: rgb(0, 204, 204);" ;=""><a href="Driver.html" title="Software Driver">Software Driver</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Electronica.html" title="Electrónica">Electrónica </a></li>
+  <li style="color: rgb(0, 204, 204);" class="current"><a href="Mecanica.html" title="Mecánica">Mecánica</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Codigo.html" title="Código">Código</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Gfotos.html" title="Fotos">Fotos</a></li>
+  <li style="background-color: rgb(0, 204, 204); color: rgb(0, 204, 204);"><a href="mas.html" title="Más">+</a></li>
+</ul>
+</div>
+<center style="padding: 5px 0px;"><big style="font-weight: bold; color: white;"><big><big>ROUTER CNC<br>
+</big></big></big></center>
+<div style="text-align: center;">
+<div style="text-align: center;"><!-- Optionally use Animate.css --></div>
+<div id="main-slider" class="liquid-slider">
+<div>
+<h2 style="color: rgb(0, 0, 153);" class="title">Router CNC,vista
+lateral Izq.<br>
+</h2>
+<img style="width: 960px; height: 679px;" src="Mecanismo/CNC.jpg" alt="x"><br>
+<p style="text-align: center;"><span style="font-weight: bold;"><br>
+</span></p>
+<p style="text-align: center;">&nbsp;</p>
+</div>
+<div>
+/*-------------------------------------------------------------------------
+<h2 style="color: rgb(204, 0, 0);" class="title"><span style="color: rgb(0, 0, 153);">Eje Y e y eje Z, vista frontal
+</span></h2>
+<img style="width: 960px; height: 679px;" alt="x" src="Mecanismo/Ele%20Y%20y%20Z.jpg"><br>
+<br>
+</div>
+/*-------------------------------------------------------------------------
+<div>
+
+<h2 style="color: rgb(0, 0, 177);" class="title">Laterales eje Y, vista
+frontal.<br>
+</h2>
+<img style="width: 794px; height: 1123px;" alt="x" src="Mecanismo/lATERAL%20Y.jpg"><br>
+<br>
+<p style="text-align: left;"><br>
+</p>
+</div>
+/*-------------------------------------------------------------------------
+<div>
+
+<h2 style="color: rgb(0, 0, 153);" class="title">Eje X, vista superior.<br>
+</h2>
+<img style="width: 794px; height: 1123px;" alt="x" src="Mecanismo/eje%20x.jpg"><br>
+<br>
+</div>
+<div>
+/*-------------------------------------------------------------------------
+<h2 style="color: rgb(0, 0, 177);" class="title">Piezas utilizadas.<br>
+</h2>
+<img style="width: 794px; height: 1123px;" alt="x" src="Mecanismo/elEMENTOS.jpg"><br>
+<br>
+</div>
+<div>
+/*-------------------------------------------------------------------------
+<h2 style="color: rgb(0, 0, 177);" class="title">Piezas utilizadas.<br>
+</h2>
+<img style="width: 794px; height: 1123px;" alt="x" src="Mecanismo/elEMENTOS.jpg"><br>
+<br>
+</div>
+<div>
+/*-----
+<footer>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.easing.min.js"></script>
+<script src="./js/jquery.touchSwipe.min.js"></script>
+<script src="./js/jquery.liquid-slider.min.js"></script>
+<script>
+
+$('#main-slider').liquidSlider();
+</script></footer><br>
+</div>
+<center>.</center>
+<div style="text-align: center;"><a href="#" onclick="subir();return false" title="Ir Arriba"><img style="position: fixed; bottom: 0pt; right: 0pt;" src="icon_top.png" border="0"> </a>
+<br>
+<br>
+</div>
+<div id="footer">
+2013 - 2014 © Autor : Denis German Gimenez<br>
+<br>
+<p id="credits">CADCNC V: 1.0<br>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</body></html>

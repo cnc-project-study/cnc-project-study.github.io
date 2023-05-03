@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+  
+  <script language="javascript" type="text/javascript">
+
+var arriba;
+function subir() {
+if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
+window.scrollBy(0, -15);
+arriba = setTimeout('subir()', 10);
+}
+else clearTimeout(arriba);
+}
+  </script>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>CADCNC V 1.0</title>
+  
+
+  
+  
+  <link href="style.css" rel="stylesheet" type="text/css" /><style type="text/css">
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		P.western { font-family: "Ubuntu" }
+		P.cjk { font-size: 10pt }
+	--></style></head><body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+<div id="wrap">
+<div id="header">
+<div id="topnav">
+<ul>
+  <li style="color: rgb(0, 204, 204);"><a href="index.html" title="Introducción">Introducción</a></li>
+  <li style="color: rgb(0, 204, 204); background-color: rgb(0, 204, 204);"><a href="Graficacion.html" title="Software de Graficacion">Software
+de Graficacion</a></li>
+  <li style="color: rgb(0, 204, 204);" ;=""><a href="Driver.html" title="Software Driver">Software Driver</a></li>
+  <li style="color: rgb(0, 204, 204);" class="current"><a href="Electronica.html" title="Electrónica">Electrónica </a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Mecanica.html" title="Mecánica">Mecánica</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Codigo.html" title="Código">Código</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Gfotos.html" title="Fotos">Fotos</a></li>
+  <li style="background-color: rgb(0, 204, 204); color: rgb(0, 204, 204);"><a href="mas.html" title="Más">+</a></li>
+</ul>
+</div>
+<div id="introtext">
+<table style="text-align: left; width: 960px; margin-left: auto; margin-right: auto; height: 142px;" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td style="vertical-align: bottom; height: 142px; text-align: center; width: 220px;"><img src="print%20pantalla/ABRIR%20PROYECTO.png" style="width: 190px; height: 122px;" alt="c" hspace="0" vspace="2" /><br />
+      </td>
+      <td style="vertical-align: top; height: 142px; width: 734px;">
+      <div style="text-align: center;"> </div>
+      <h1 style="text-align: center;" id="sitename"><big>Circuitos
+electrónicos del Router CNC.</big></h1>
+      <br />
+      <big> </big></td>
+    </tr>
+  </tbody>
+</table>
+<h1 style="height: 61px;" id="sitename"><br />
+</h1>
+<br />
+</div>
+</div>
+<div id="content">
+<div id="left">
+<div class="container">
+<div class="post">
+<div style="margin-left: 29px; width: 910px;">
+<div style="text-align: center;"><br style="font-weight: bold;" />
+<big><span style="font-weight: bold;">Circuitos electrónicos .</span></big><br />
+<br />
+<div style="text-align: left;">Debido a que el puerto paralelos no fue
+diseñado para controlar grades cargas, Estas no tienen que superan 24
+mA máximo de consumo, Debido a esta limitación, se genera la necesidad
+de utilizar circuitos para crear una etapa de potencia, de esta forma<br />solucionamos este inconveniente .<br />A
+parte, tanto los Motores PaP bipolares utilizados para mecanizar los
+ejes X e Y, y el motor DC que se utiliza en el Eje Z requieren
+inversión de los polos. A ello va el uso de los puentes H que se
+describirán mas adelante.<br /><br style="font-weight: bold;" /><span style="font-weight: bold;">Ejemplo:</span><br /><br /><span style="font-weight: bold; text-decoration: underline;">Puerto paralelo, bus de datos , control del Motor Eje X.</span><br style="font-weight: bold; text-decoration: underline;" /><br /><div style="text-align: center;"><img src="electronica/Captura%20de%20pantalla%20de%202014-07-30%2010:16:00.png" style="width: 863px; height: 311px;" alt="x" /><br /><img src="electronica/2.png" style="width: 55px; height: 61px;" alt="x" /><br /><div style="text-align: left;"><span style="font-weight: bold; text-decoration: underline;">Circuito X .</span><br /><br /></div><img src="electronica/3.png" style="width: 864px; height: 279px;" alt="x" /><br /><br /><span style="font-weight:
+bold;">Esquema General Circuitos electronicos.</span><br /><br /><img src="electronica/DIAGRAMA%20CIRCUTOS.jpg" style="width: 724px; height: 1040px;" alt="x" /><br /><br /></div><br /><div style="text-align: center;"><big><span style="font-weight: bold;">CIRCUTO INTERLOCK</span></big><br /></div><br /><span style="font-weight: bold;">Circuito de protección internlock</span>.<br /><br />El
+circuito de interlock como se describe en la imagen, bloquea las
+salidas cuando en ambas entradas (E0 Y E1) se encuentren en estado
+lógico alto .Se utiliza con el propósito de proteger las salidas del IC
+L293D. Ya que el mismo podría dañare en el caso en que se presente un
+valor alto en las entradas E0 Y E1 y en su salida presente un carga
+inductiva alta . Es muy común que a lo largo del desarrollo del
+proyecto el programa presente fallas y no logre finalizar adecuadamente
+.Pudiendo estar enviando valores altos por un tiempo prolongado hasta
+su desconexión. Evaluando el costo/beneficio, se resuelve que su uso e
+implementación es practicante fundamental. Evitando así la destrucción
+del IC l293D y el gasto de comprar uno nuevamente.<br /><br /><div style="text-align: center;"><img src="electronica/4.png" style="width: 500px; height: 207px;" alt="X" /><br /><div style="text-align: left;">
+
+
+	
+	
+	<span style="font-weight: bold;"><br />Segun sus entradas :</span><br /><br /></div><table style="text-align: left; width: 911px; height: 435px;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top; width: 350px; text-align: center;"><img src="electronica/5.png" style="width: 336px; height: 427px;" alt="X" /><br /></td><td style="vertical-align: top; width: 350px; text-align: center;"><img src="electronica/6.png" style="width: 336px; height: 437px;" alt="X" /><br /></td></tr></tbody></table><br /><div style="text-align: left;">Para
+recrear el diagrama lógico del circuito de protección . Se emplea el
+HD74HC08 que es un Dip 14 en su interior encontramos 4 compuertas “AND”
+y un SN54HC04 también con un encapsulado Dip 14 pero en su interior se
+encuentra 6 inversores lógicos.<br /></div><br /><table style="text-align: left; width: 911px; height: 194px;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top; width: 350px; text-align: center; height: 25px;"><span style="font-weight: bold;">HD74HC08</span><br /></td><td style="vertical-align: top; text-align: center; width: 350px;"><span style="font-weight: bold;">SN54HC04</span><br /></td></tr><tr><td style="vertical-align: top; height: 350px; text-align: center;"><br /><img style="width: 300px; height: 291px;" alt="X" src="electronica/HD74HC08-pinout.jpg" /><br /></td><td style="vertical-align: top; text-align: center;"><img style="width: 315px; height: 328px;" alt="X" src="electronica/8.png" /><br /></td></tr><tr><td colspan="2" rowspan="1" style="vertical-align:
+top;">Rango de voltaje de Operación 2v a 6v, con un bajo consumo de 20 uA Máximo en Icc .<br />
+Tiempo de repuesta de 8 nS.<br />
+Proporciona una salida Máxima de 4mA en 5 V .<br /></td></tr></tbody></table><br />
+<span style="font-weight: bold;">Esquema del </span><span style="font-weight: bold;">circuito de protección </span><br />
+<br />
+<img style="width: 911px; height: 544px;" alt="x" src="electronica/Interlock.PNG" /><br /><br />
+<br /></div><br />
+<div style="text-align: center;"><span style="font-weight: bold;">CIRCUITO H</span><br />
+<br />
+<div style="text-align: left;">El L293D es un doble puente H integrado
+en un encapsulado DIP 16 . Permite la inversión de polos en sus cuatro
+salidas .Lo cual es ideal para el uso de control de motores de DC y de
+motores pap bipolares.<br />
+El integrado L293D incluye cuatro circuitos para manejar cargas de
+potencia media, en especial pequeños motores y cargas inductivas, con
+la capacidad de controlar corriente hasta 600 mA en cada circuito y una
+tensión entre 4,5 V a 36 V.<br />
+<br />
+Los circuitos individuales se pueden usar de manera independiente para
+controlar cargas de todo tipo y, en el caso de ser motores, manejar un
+único sentido de giro. Pero además, cualquiera de estos cuatro
+circuitos sirve para configurar la mitad de un puente H.<br />
+Los circuitos individuales se pueden usar de manera independiente para
+controlar cargas de todo tipo y, en el caso de ser motores, manejar un
+único sentido de giro. Pero además, cualquiera de estos cuatro
+circuitos sirve para configurar la mitad de un puente H.<br />
+El integrado permite formar, entonces, dos puentes H completos, con los
+que se puede realizar el manejo de dos motores. En este caso el manejo
+será bidireccional, con frenado rápido y con posibilidad de implementar
+fácilmente el control de velocidad.<br />
+Las salidas tienen un diseño que permite el manejo directo de cargas
+inductivas tales como relés, solenoides, motores de corriente continua
+y motores por pasos, ya que incorpora internamente los diodos de
+protección de contracorriente para cargas inductivas.<br />
+Las entradas son compatibles con niveles de lógica TTL. Para lograr
+esto, incluso cuando se manejen motores de voltajes no compatibles con
+los niveles TTL, el chip tiene patas de alimentación separadas para la
+lógica (VCC1, que debe ser de 5V) y para la alimentación de la carga
+(VCC2, que puede ser entre 4,5V y 36V).<br />
+Las salidas poseen un circuito de manejo en configuración "totem-pole"
+(término en inglés que se traduce como "poste de tótem", nombre que,
+gráficamente, nos remite a un "apilamiento" de transistores, como las
+figuras en los famosos totems indígenas).<br />
+En esta estructura, unos transistores en configuración Darlington
+conducen la pata de salida a tierra y otro par de transistores en
+conexión seudo Darlington aporta la corriente de alimentación desde
+VCC2. Las salidas tienen diodos incorporados en el interior del chip
+para proteger al circuito de manejo de potencia de las contracorrientes
+de una carga<br />
+inductiva.<br />
+<table style="text-align: left; width: 882px; height: 80px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top; height: 28px;"><span style="font-weight: bold;">L293D</span><br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; height: 500px; width: 350px;">
+      <div style="text-align: center;"><img style="width: 238px; height: 153px;" alt="x" src="electronica/9.jpg" /><br />
+      </div>
+      <br />
+      <div style="text-align: center;"><img style="width: 250px; height: 238px;" alt="x" src="electronica/10.jpg" /><br />
+      <br />
+      <img style="width: 358px; height: 241px;" alt="x" src="electronica/11.gif" /><br />
+      </div>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><img style="width: 351px; height: 662px;" alt="x" src="electronica/12.jpg" /><br />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Rango voltaje de operación 4,5 v a 36 v<br />
+Alimentación separada de entrada lógica.<br />
+Corriente de salida de 1 A por canal (600 mA para L293D)<br />
+Pico Corriente de salida 2 A por canal (1,2 A para L293D)<br />
+Protección ESD.<br />
+Protección térmica.<br />
+Maneja correctamente frecuencias de hasta 5 khz.<br />
+Temperatura de operación de 0 Cº a 70 Cº funciona correctamente hasta los 90 Cº .<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<div style="text-align: center;"><span style="font-weight: bold;">Esquema del circuito H</span><br />
+<br />
+<img style="width: 911px; height: 546px;" alt="x" src="electronica/Circuito-%20H.PNG" /><br />
+</div>
+<br />
+Se utilizan los Diodo Schottky ( diodo de alta velocidad ) para
+suprimir la corriente transitoria producida por la carga inductiva.<br />
+El voltaje de los motores en este caso se establece a 5V -cc .<br />
+</div>
+<br />
+</div>
+
+</div>
+</div>
+<div style="text-align: left;">
+</div>
+</div>
+<div style="text-align: left;">
+<br />
+<div style="text-align: center;"><a href="#" onclick="subir();return false" title="Ir Arriba"><img style="position: fixed; bottom: 0pt; right: 0pt;" src="icon_top.png" border="0" /> </a>
+
+</div>
+</div>
+<div style="text-align: left;">
+</div>
+<div style="text-align: left;" class="clear">
+</div>
+<div style="text-align: left;">
+</div>
+<div id="footer">
+<div style="text-align: center;">
+</div>
+
+2013 - 2014 © Autor : Denis German Gimenez<br />
+<p><br />
+</p>
+
+<p id="credits">CADCNC V: 1.0<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div></body></html>

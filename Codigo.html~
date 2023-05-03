@@ -1,0 +1,3442 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+  
+ <script language="javascript" type="text/javascript">
+
+var arriba;
+function subir() {
+if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
+window.scrollBy(0, -15);
+arriba = setTimeout('subir()', 10);
+}
+else clearTimeout(arriba);
+}
+</script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>CADCNC V 1.0</title>
+  
+
+  
+  
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+
+  
+  <meta name="description" content="Liquid Slider : The Last Responsive Content Slider You'll Ever Need">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <link rel="stylesheet" href="./css/animate.min.css">
+
+  
+  <link rel="stylesheet" href="./css/liquid-slider.css">
+
+  
+  <meta charset="utf-8">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+
+  
+  <meta name="description" content="Liquid Slider : The Last Responsive Content Slider You'll Ever Need">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <link rel="stylesheet" href="./css/animate.min.css">
+
+  
+  <link rel="stylesheet" href="./css/liquid-slider.css"></head><body>
+<div style="text-align: center;">a#551a8b"&gt;
+</div>
+
+<div id="wrap">
+<div style="height: 915px;" id="header">
+<div id="topnav">
+<ul>
+  <li style="color: rgb(0, 204, 204);"><a href="index.html" title="Introducción">Introducción</a></li>
+  <li style="color: rgb(0, 204, 204); background-color: rgb(0, 204, 204);"><a href="Graficacion.html" title="Software de Graficacion">Software
+de Graficacion</a></li>
+  <li style="color: rgb(0, 204, 204);" ;=""><a href="Driver.html" title="Software Driver">Software Driver</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Electronica.html" title="Electrónica">Electrónica </a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Mecanica.html" title="Mecánica">Mecánica</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Codigo.html" title="Código">Código</a></li>
+  <li style="color: rgb(0, 204, 204);" class="current"><a href="Gfotos.html" title="Fotos">Fotos</a></li>
+  <li style="background-color: rgb(0, 204, 204); color: rgb(0, 204, 204);"><a href="mas.html" title="Más">+</a></li>
+</ul>
+</div>
+<center style="padding: 5px 0px;"><big style="font-weight: bold; color: white;"><big><big>Codigo fuente<br>
+</big></big></big></center>
+<div style="text-align: center;">
+<div style="text-align: center;"><!-- Optionally use Animate.css --></div>
+<div id="main-slider" class="liquid-slider">
+<div>
+<h2 style="color: rgb(0, 0, 153);" class="title">Fmain.Class
+v2.1 <br>
+</h2>
+<br>
+<p style="text-align: center;"><span style="font-weight: bold;"><br>
+</span></p>
+<p style="text-align: center;"><span style="font-weight: bold;">'(clase
+principal sosftware de graficacion)</span></p>
+<p style="text-align: center;"><span style="font-weight: bold;"></span><br>
+</p>
+<p style="text-align: left;">Public Enable As Boolean<br>
+Public pointsArr_x As New Float[]<br>
+Public pointsArr_y As New Float[]<br>
+Public simular As Boolean <br>
+Public pause As Boolean<br>
+Public posx As Float<br>
+Public posy As Float<br>
+Public a As Integer<br>
+Public radio As Float<br>
+Public maxx As Integer <br>
+Public num_mas As Integer<br>
+Public num_menos As Integer<br>
+Public XAXB As Integer<br>
+Public YAYB As Integer<br>
+Public x1x2 As Integer<br>
+Public y1y2 As Integer<br>
+Public cx As Integer<br>
+Public maxpoin As Boolean<br>
+Public ti As Integer<br>
+Public lxizq As Boolean<br>
+Public lxdercha As Boolean<br>
+Public lyup As Boolean<br>
+Public lydown As Boolean<br>
+Public miCaptura As New Picture<br>
+Public puntoselect As Integer <br>
+<br>
+Public Sub dwgGrapharea_Draw()<br>
+Dim i As Integer<br>
+Dim g As Integer<br>
+Dim a As Integer<br>
+Dim b As Integer<br>
+Dim L As Integer<br>
+If button1.Border = False Then <br>
+&nbsp;&nbsp; Button1.Border = True<br>
+&nbsp;&nbsp;&nbsp; Button17.Enabled = True<br>
+&nbsp;dwgGrapharea.Mouse = Mouse.Pointing<br>
+Endif<br>
+<br>
+Paint.LineWidth = 0.2<br>
+paint.Brush = paint.Color(Color.DarkGreen)<br>
+<br>
+For g = 1 To 33 Step 1<br>
+&nbsp;Paint.MoveTo(0, a)<br>
+Paint.LineTo(1100, a)<br>
+a = a + 20<br>
+Next<br>
+Paint.Stroke<br>
+For g = 1 To 56 Step 1<br>
+&nbsp;Paint.MoveTo(b, 0)<br>
+Paint.LineTo(b, 640)<br>
+b = b + 20<br>
+Next<br>
+Paint.Stroke<br>
+<br>
+<br>
+If CheckBox1.Value = False Then<br>
+&nbsp;&nbsp;&nbsp; paint.Brush = paint.Color(Color.White)<br>
+&nbsp; &nbsp;<br>
+&nbsp;&nbsp; Paint.LineWidth = 1<br>
+&nbsp;&nbsp; paint.Font.Size = 10<br>
+&nbsp; For i = 0 To pointsArr_x.Max<br>
+&nbsp;&nbsp;&nbsp;&nbsp; If i = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Paint.MoveTo(pointsArr_x[i], pointsArr_y[i])<br>
+Endif<br>
+<br>
+&nbsp; If pointsArr_x[i] = 00 And pointsArr_y[i] = 00 Then<br>
+&nbsp; i = i + 1<br>
+<br>
+&nbsp; Try Paint.MoveTo(pointsArr_x[i], pointsArr_y[i]) <br>
+&nbsp; End If<br>
+&nbsp;<br>
+&nbsp; Try Paint.LineTo(pointsArr_x[i], pointsArr_y[i])<br>
+<br>
+&nbsp;&nbsp; Next<br>
+<br>
+&nbsp; paint.Stroke<br>
+<br>
+If CheckBox2.Value = True Then<br>
+&nbsp;&nbsp; 'numeros<br>
+&nbsp;&nbsp; For i = 0 To pointsArr_x.Max<br>
+&nbsp;&nbsp;&nbsp;&nbsp; If pointsArr_x[i] = 0 And pointsArr_y[i] = 0
+Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L = L + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; paint.Text(i + 1 - L,
+pointsArr_x[i], pointsArr_y[i] - 8)<br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp;&nbsp; Next<br>
+&nbsp; paint.Fill<br>
+&nbsp; <br>
+&nbsp;&nbsp; Endif<br>
+<br>
+End If<br>
+<br>
+&nbsp;PaintObj.PUNTOS_RED()<br>
+If simular = True Then<br>
+&nbsp;PaintObj.cncsimulator<br>
+&nbsp;End If<br>
+PaintObj.regla1<br>
+PaintObj.regla2<br>
+PaintObj.simular<br>
+End<br>
+<br>
+Public Sub Button1_Click()<br>
+<br>
+Dim cero As Integer <br>
+cero = 00<br>
+If (pointsArr_x.Max &lt;&gt; 00 And pointsArr_y.Max &lt;&gt; 00) And
+Button1.Border = True Then<br>
+&nbsp;&nbsp;&nbsp; If pointsArr_x[pointsArr_x.Max] &lt;&gt; 0 And
+pointsArr_y[pointsArr_y.Max] &lt;&gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp; pointsArr_x.Add(00)<br>
+&nbsp;&nbsp;&nbsp; pointsArr_y.Add(00)<br>
+&nbsp;&nbsp;&nbsp; Button1.Border = False<br>
+&nbsp;&nbsp;&nbsp; dwgGrapharea.Mouse = Mouse.Cross<br>
+&nbsp;&nbsp;&nbsp; Button17.Enabled = False<br>
+&nbsp;&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dwgGrapharea.Mouse = Mouse.Pointing <br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+Else<br>
+pointsArr_x.Remove(pointsArr_y.Max)<br>
+pointsArr_y.Remove(pointsArr_y.Max)<br>
+&nbsp;Button1.Border = True<br>
+Button17.Enabled = True<br>
+dwgGrapharea.Mouse = Mouse.Pointing<br>
+Endif<br>
+&nbsp;Catch<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub btnClear_Click()<br>
+&nbsp;pointsArr_x.Clear<br>
+&nbsp;&nbsp; pointsArr_y.Clear<br>
+&nbsp;<br>
+&nbsp; ' ListBox1.Clear<br>
+&nbsp;bdArray.BorrarTodo<br>
+&nbsp;&nbsp; dwgGrapharea.Refresh<br>
+a Timerx.Enabled = False<br>
+Timery.Enabled = False<br>
+PaintObj.ix = 0<br>
+PaintObj.iy = 0<br>
+ti = 0<br>
+cx = 0<br>
+FMain.maxpoin = False<br>
+<br>
+End<br>
+<br>
+Public Sub btnClose_Click()<br>
+<br>
+&nbsp; Me.Close<br>
+<br>
+End<br>
+<br>
+Public Sub Form_Open()<br>
+Label9.Text = Mysql.softwareandvercion<br>
+a = 0<br>
+simular = False<br>
+'bdArray.BorrarTodo<br>
+&nbsp; Button8.Enabled = False<br>
+Button9.Enabled = False<br>
+dwgGrapharea.Margin = True<br>
+dwgGrapharea.Refresh<br>
+DrawingArea1.Refresh<br>
+Label8.Text = Mysql.Proyectonombre<br>
+Label11.Text = Mysql.Usuarionombre<br>
+Enable = True<br>
+Try CtrlManual.puerto = Open "/dev/port" For Write<br>
+CtrlManual.Timer1_Timer()<br>
+Variables.cmv = 7<br>
+DrawingArea1.SetFocus<br>
+End<br>
+<br>
+<br>
+Public Sub Button9_Click()<br>
+Timerx.Enabled = False<br>
+Timery.Enabled = False<br>
+PaintObj.ix = 0<br>
+PaintObj.iy = 0<br>
+ti = 0<br>
+cx = 0<br>
+btnClear.Enabled = True<br>
+Button4.Enabled = True<br>
+Button5.Enabled = True<br>
+Button8.Enabled = False<br>
+Button9.Enabled = False<br>
+End<br>
+<br>
+Public Sub Guardar_Click()<br>
+bdArray.save<br>
+End<br>
+<br>
+Public Sub Button4_Click()<br>
+&nbsp; bdArray.contartemp<br>
+If bdArray.selecttemp.Count &lt; pointsArr_x.Count Or
+bdArray.selecttemp.Count = pointsArr_x.Count Then<br>
+&nbsp;bdArray.cargartemp()<br>
+Endif<br>
+<br>
+If bdArray.selecttemp.Count = 0 Then<br>
+&nbsp; Else<br>
+&nbsp; bdArray.IR_ATRAS<br>
+Endif<br>
+End<br>
+<br>
+Public Sub Button5_Click()<br>
+bdArray.contartemp<br>
+If bdArray.selecttemp.Count = 0 Then<br>
+&nbsp; Else<br>
+bdArray.IR_ADELANTE<br>
+Endif<br>
+End<br>
+<br>
+Public Sub Slider1_Change()<br>
+dwgGrapharea.Refresh<br>
+DrawingArea1.Refresh<br>
+End<br>
+<br>
+Public Sub Slider2_Change()<br>
+dwgGrapharea.Refresh<br>
+DrawingArea2.Refresh<br>
+End<br>
+<br>
+Public Sub Button7_Click()<br>
+Button8.Enabled = True<br>
+Button9.Enabled = True<br>
+&nbsp;If ti &lt;&gt; pointsArr_x.Max And FMain.pointsArr_y.Count
+&lt;&gt; 1 Then<br>
+&nbsp; Button4.Enabled = False<br>
+&nbsp; Button5.Enabled = False<br>
+&nbsp; btnClear.Enabled = False<br>
+&nbsp;&nbsp; If FMain.pointsArr_x[ti + 1] = 00 Then ti = ti + 2<br>
+PaintObj.ix = 0<br>
+PaintObj.iy = 0<br>
+cx = 0<br>
+'---------------------------------------------------------------------------------------------------------------------<br>
+If FMain.pointsArr_x[ti] = FMain.pointsArr_x[ti + 1] And
+FMain.pointsArr_y[ti] &lt;&gt; FMain.pointsArr_y[ti + 1] Then<br>
+&nbsp; If FMain.pointsArr_y[ti] &gt; FMain.pointsArr_y[ti + 1] Then<br>
+&nbsp; Message.Info("vamos bien esto es una linea vertical hacia arriba
+")<br>
+&nbsp; Else <br>
+&nbsp; Message.Info("vamos bien esto es una linea vertical hacia la
+abajo ")<br>
+&nbsp; lydown = True<br>
+&nbsp; Endif<br>
+Endif<br>
+'---------------------------------------------------------------------------------------------------------------------<br>
+If FMain.pointsArr_y[ti] = FMain.pointsArr_y[ti + 1] And
+FMain.pointsArr_x[ti] &lt;&gt; FMain.pointsArr_x[ti + 1] Then<br>
+&nbsp;&nbsp;&nbsp; If FMain.pointsArr_x[ti] &gt; FMain.pointsArr_x[ti +
+1] Then<br>
+&nbsp; Message.Info("vamos bien esto es una linea horizontal hacia
+izquierda ")<br>
+&nbsp; Else <br>
+&nbsp; Message.Info("vamos bien esto es una linea horizontal hacia la
+derecha ")<br>
+Endif<br>
+Endif<br>
+&nbsp;If FMain.pointsArr_x[ti] &lt; FMain.pointsArr_x[ti + 1] Then<br>
+&nbsp;&nbsp;&nbsp; XAXB = FMain.pointsArr_x[ti + 1] -
+FMain.pointsArr_x[ti]<br>
+&nbsp;&nbsp;&nbsp; x1x2 = FMain.pointsArr_x[ti + 1] -
+FMain.pointsArr_x[ti]<br>
+&nbsp;&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp; XAXB = FMain.pointsArr_x[ti] -
+FMain.pointsArr_x[ti + 1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x1x2 = FMain.pointsArr_x[ti + 1] -
+FMain.pointsArr_x[ti]<br>
+Endif<br>
+If FMain.pointsArr_y[ti] &lt; FMain.pointsArr_y[ti + 1] Then<br>
+&nbsp;&nbsp;&nbsp; YAYB = FMain.pointsArr_y[ti + 1] -
+FMain.pointsArr_y[ti]<br>
+&nbsp;&nbsp;&nbsp; y1y2 = FMain.pointsArr_y[ti + 1] -
+FMain.pointsArr_y[ti]<br>
+&nbsp;&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp; YAYB = FMain.pointsArr_y[ti] - FMain.pointsArr_y[ti
++ 1]<br>
+&nbsp;&nbsp;&nbsp; y1y2 = FMain.pointsArr_y[ti + 1] -
+FMain.pointsArr_y[ti]<br>
+Endif<br>
+If XAXB &gt; YAYB Then<br>
+Timerx.Delay = 50<br>
+Try Timery.Delay = (50 * XAXB) / YAYB<br>
+Timerx.Enabled = True<br>
+Timery.Enabled = True<br>
+Else<br>
+Timery.Delay = 50<br>
+Try Timerx.Delay = (50 * YAYB) / XAXB<br>
+Timerx.Enabled = True<br>
+Timery.Enabled = True<br>
+Endif<br>
+'///////////////////////////////<br>
+ti = ti + 1 <br>
+If Error Then <br>
+Button7_Click()<br>
+Else<br>
+maxpoin = False<br>
+Endif<br>
+Else<br>
+Endif<br>
+'Catch<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub Timerx_Timer()<br>
+cx = cx + 1<br>
+If cx = XAXB Then<br>
+Timerx.Enabled = False <br>
+Timery.Enabled = False&nbsp; &nbsp;<br>
+PaintObj.ix = 0<br>
+PaintObj.iy = 0<br>
+&nbsp;Button4.Enabled = True<br>
+&nbsp; Button5.Enabled = True<br>
+&nbsp;&nbsp;&nbsp; btnClear.Enabled = True<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Button8.Enabled = False<br>
+'Button9.Enabled = False<br>
+If ti &lt;&gt; FMain.pointsArr_x.Max Then<br>
+&nbsp;Button7_Click <br>
+&nbsp;Else<br>
+&nbsp;Button9_Click<br>
+Endif<br>
+If ti = FMain.pointsArr_x.Max + 1 Then <br>
+ti = 0<br>
+<br>
+Endif<br>
+Else<br>
+PaintObj.ix = PaintObj.ix + 1<br>
+dwgGrapharea.Refresh<br>
+Endif<br>
+pause = False<br>
+End<br>
+Public Sub Timery_Timer()<br>
+PaintObj.iy = PaintObj.iy + 1<br>
+dwgGrapharea.Refresh<br>
+End<br>
+<br>
+<br>
+Public Sub Button8_Click()<br>
+<br>
+Timerx.Enabled = False<br>
+TimerY.Enabled = False<br>
+<br>
+End<br>
+<br>
+Public Sub Button3_Click()<br>
+bdArray.save<br>
+End<br>
+<br>
+Public Sub DrawingArea2_Draw()<br>
+Dim i As Integer<br>
+Dim a As Integer<br>
+<br>
+paint.Brush = paint.Color(Color.White)<br>
+<br>
+For i = 0 To 55 Step 1<br>
+&nbsp; a = a + 20<br>
+&nbsp;paint.Text(i + 1, 0 + a, 15)<br>
+Next<br>
+Paint.fill<br>
+PaintObj.reglax<br>
+End<br>
+<br>
+Public Sub DrawingArea1_Draw()<br>
+Dim i As Integer<br>
+Dim a As Integer<br>
+paint.Brush = paint.Color(Color.White)<br>
+For i = 0 To 55 Step 1<br>
+&nbsp; a = a + 20<br>
+&nbsp;paint.Text(i + 1, 5, 0 + a)<br>
+Next<br>
+Paint.fill<br>
+&nbsp; PaintObj.reglay<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub Panel5_MouseMove()<br>
+<br>
+FMain.X = (Mouse.ScreenX)<br>
+&nbsp;Wait 0.002<br>
+FMain.Y = (Mouse.ScreenY)<br>
+End</p>
+<p style="text-align: left;"><br>
+</p>
+<p style="text-align: left;">Public Sub ToggleButton2_Click()<br>
+&nbsp; Me.Minimized = True<br>
+End<br>
+<br>
+Public Sub ToggleButton3_Click()<br>
+If FMain.FullScreen = False Then<br>
+FMain.Border = False <br>
+Else<br>
+FMain.Border = True<br>
+FMain.FullScreen = False<br>
+Endif<br>
+End<br>
+<br>
+Public Sub Button6_Click()<br>
+If Enable = False Then<br>
+&nbsp; Enable = True<br>
+&nbsp; look.Visible = False<br>
+&nbsp; Button17.Enabled = True<br>
+&nbsp; Button4.Enabled = True<br>
+&nbsp; Button5.Enabled = True<br>
+&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Button4.Enabled = False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Button5.Enabled = False<br>
+&nbsp;&nbsp;&nbsp; Enable = False<br>
+&nbsp;&nbsp;&nbsp; look.Visible = True<br>
+&nbsp;&nbsp;&nbsp; Button17.Enabled = False<br>
+Endif<br>
+<br>
+End<br>
+Public Sub dwgGrapharea_MouseUp()<br>
+<br>
+<br>
+Dim actualizartemp As Result<br>
+If Enable = True Then<br>
+<br>
+<br>
+Try actualizartemp = Mysql.Conexion.Exec("Update Graficos_temp SET x=
+'" &amp; pointsArr_x[pointsArr_x.Max] &amp; "', y= '" &amp;
+pointsArr_y[pointsArr_y.Max] &amp; "'&nbsp; where&nbsp; nombre = '"
+&amp; FMain.Label8.text &amp; "' ORDER BY id DESC LIMIT 1 ")<br>
+<br>
+&nbsp;&nbsp; If (Mouse.X &gt; 0 And Mouse.X &lt; 1100) And (Mouse.Y
+&gt; 0 And Mouse.Y &lt; 640) Then <br>
+<br>
+&nbsp;If FMain.solopunto.Value = True And pointsArr_x.Max &lt;&gt; -1
+Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FMain.Button1_Click() <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Endif <br>
+&nbsp;&nbsp; If pointsArr_x.Count &lt;&gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If Mouse.X &lt;&gt;
+pointsArr_x[pointsArr_x.Max] Or Mouse.Y &lt;&gt;
+pointsArr_y[pointsArr_y.Max] Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+pointsArr_x.Add(Mouse.X)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+pointsArr_y.Add(Mouse.Y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xText.Text =
+((Mouse.X / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yText.Text =
+((Mouse.y / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dwgGrapharea.Refresh<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pointsArr_x.Add(Mouse.X)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pointsArr_y.Add(Mouse.Y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bdArray.cargartemp()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xText.Text = ((Mouse.X / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yText.Text = ((Mouse.y / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dwgGrapharea.Refresh<br>
+<br>
+&nbsp;&nbsp; Endif<br>
+<br>
+&nbsp;&nbsp; Endif<br>
+<br>
+Endif<br>
+<br>
+End<br>
+<br>
+Public Sub Button2_Click()<br>
+PaintObj.lineas_rectas()<br>
+End<br>
+Public Sub Button10_Click()<br>
+&nbsp; CtrlManual.ShowDialog<br>
+End<br>
+<br>
+<br>
+Public Sub Timer3_Timer()<br>
+PaintObj.iy = PaintObj.iy - 1<br>
+dwgGrapharea.Refresh<br>
+End<br>
+<br>
+Public Sub Button13_Click()<br>
+bdArray.save<br>
+Calcular.CNCBEGIN()<br>
+End<br>
+<br>
+<br>
+Public Sub CheckBox2_Click()<br>
+dwgGrapharea.Refresh<br>
+<br>
+End<br>
+<br>
+Public Sub CheckBox1_Click()<br>
+dwgGrapharea.Refresh<br>
+End<br>
+<br>
+Public Sub Button16_Click()<br>
+If Panel1.Visible = True Then<br>
+&nbsp; Panel1.Visible = False<br>
+&nbsp; Panel2.X = 0<br>
+&nbsp; Button16.Text = "Contraer"<br>
+&nbsp; Else<br>
+&nbsp; Panel1.Visible = True<br>
+&nbsp;&nbsp; Panel2.X = 120<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Button16.Text = "Expandir"<br>
+Endif<br>
+End<br>
+<br>
+<br>
+Public Sub Button14_Click()<br>
+bdArray.save<br>
+MonitorizarCalc.ShowDialog<br>
+End<br>
+<br>
+<br>
+Public Sub Guardar_como_Click()<br>
+Dim i As Integer<br>
+Dim datos As New String[]<br>
+Dim proyecto As String<br>
+Dim dirr As String<br>
+<br>
+proyecto = ""<br>
+datos.Clear<br>
+datos.Add(Mysql.Usuarionombre)<br>
+datos.Add(Mysql.Proyectonombre)<br>
+proyecto = datos.Join("/")<br>
+Dialog.Title = "Seleccionar directorio"<br>
+AbrirProyect.xx.Clear<br>
+AbrirProyect.yy.Clear<br>
+AbrirProyect.contenidox = ""<br>
+AbrirProyect.contenidox = ""<br>
+For i = 0 To FMain.pointsArr_x.Max<br>
+&nbsp; AbrirProyect.xx.Add(CStr(FMain.pointsArr_x[i]))<br>
+&nbsp; AbrirProyect.yy.Add(CStr(FMain.pointsArr_y[i]))<br>
+Next<br>
+<br>
+AbrirProyect.contenidox = AbrirProyect.xx.Join("-") <br>
+&nbsp;AbrirProyect.contenidoy = AbrirProyect.yy.Join("-")<br>
+Dialog.Filter = ["*.cnc", "Archivo CNCAD"]<br>
+&nbsp; If Dialog.SaveFile() Then Return<br>
+&nbsp; dirr = Replace$(Dialog.Path, ".cnc", "")<br>
+<br>
+&nbsp;<br>
+File.Save(dirr &amp; ".cnc", proyecto)<br>
+File.Save(dirr &amp; ".cncx", AbrirProyect.contenidox)<br>
+&nbsp;File.Save(dirr &amp; ".cncy", AbrirProyect.contenidoy)<br>
+<br>
+Catch<br>
+&nbsp; Message.Warning(ERROR.Text)<br>
+<br>
+<br>
+End<br>
+<br>
+Public Sub Abrir_Click()<br>
+<br>
+&nbsp; AbrirProyect.ShowDialog<br>
+<br>
+End<br>
+<br>
+Public Sub Control_Click()<br>
+<br>
+&nbsp;CtrlManual.ShowDialog<br>
+<br>
+End<br>
+<br>
+Public Sub Salir_Click()<br>
+<br>
+Select Message.Question("¿ Desea guardar los cambios ? ", " Sí", "No",
+"Cancelar")<br>
+Case 1<br>
+bdArray.save<br>
+Me.Close<br>
+Case 2<br>
+CtrlManual.offtodos_Click()<br>
+CtrlManual.stop_Click()<br>
+&nbsp;&nbsp;&nbsp; Me.CLOSE<br>
+Case 3<br>
+&nbsp;&nbsp; End Select<br>
+<br>
+End<br>
+<br>
+Public Sub Button17_Click()<br>
+If Enable = False Then <br>
+&nbsp;&nbsp; dwgGrapharea.Mouse = Mouse.Pointing<br>
+&nbsp;Enable = True<br>
+&nbsp;button1.Enabled = True<br>
+&nbsp;Button2.Enabled = True<br>
+&nbsp;Button17.Border = True<br>
+&nbsp;Else <br>
+&nbsp; Enable = False<br>
+&nbsp; button1.Enabled = False<br>
+&nbsp;&nbsp; Button17.Border = False<br>
+&nbsp;&nbsp;&nbsp; Button2.Enabled = False<br>
+&nbsp; dwgGrapharea.Mouse = Mouse.Vertical<br>
+Endif<br>
+<br>
+End<br>
+<br>
+Public Sub TextBox1_Change()<br>
+<br>
+&nbsp;Slider2.Value = ((TextBox1.Text * 10) * 2)<br>
+Catch <br>
+Slider2.Value = 0<br>
+End<br>
+<br>
+<br>
+Public Sub TextBox2_Change()<br>
+<br>
+&nbsp;Slider1.Value = ((TextBox2.Text * 10) * 2)<br>
+&nbsp;Catch<br>
+Slider1.Value = 0<br>
+End<br>
+<br>
+Public Sub Button18_Click()<br>
+<br>
+&nbsp; PaintObj.lineas_rectas()<br>
+<br>
+End<br>
+<br>
+Public Sub Iniciar_Click()<br>
+<br>
+&nbsp; bdArray.save<br>
+Calcular.CNCBEGIN()<br>
+<br>
+End<br>
+<br>
+Public Sub Iniciar2_Click()<br>
+<br>
+bdArray.save<br>
+MonitorizarCalc.ShowDialog<br>
+<br>
+End<br>
+<br>
+Public Sub Agregar_Click()<br>
+<br>
+&nbsp; CuentasUser.ShowDialog<br>
+<br>
+End<br>
+<br>
+Public Sub dwgGrapharea_MouseMove()<br>
+<br>
+&nbsp;If Enable = True Then<br>
+&nbsp;If pointsArr_x[pointsArr_x.Max] &lt;&gt; 0 And
+pointsArr_y[pointsArr_y.Max] &lt;&gt; 0 Then<br>
+&nbsp;If (Mouse.X &gt; 0 And Mouse.X &lt; 1100) And (Mouse.Y &gt; 0 And
+Mouse.Y &lt; 640) Then <br>
+pointsArr_x[pointsArr_x.Max] = Mouse.x <br>
+pointsArr_y[pointsArr_y.Max] = Mouse.y<br>
+dwgGrapharea.Refresh<br>
+DrawingArea1.Refresh<br>
+xText.Text = ((Mouse.X / 2) / 10)<br>
+&nbsp;yText.Text = ((Mouse.y / 2) / 10)<br>
+&nbsp;Endif<br>
+&nbsp;<br>
+Endif<br>
+<br>
+&nbsp;Else If Button17.Enabled = True And Enable = False Then<br>
+<br>
+&nbsp;If (Mouse.X &gt; 0 And Mouse.X &lt; 1100) And (Mouse.Y &gt; 0 And
+Mouse.Y &lt; 640) Then <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pointsArr_x[puntoselect] = Mouse.x <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pointsArr_y[puntoselect] = Mouse.y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dwgGrapharea.Refresh<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DrawingArea1.Refresh<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xText.Text = ((Mouse.X / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yText.Text = ((Mouse.y / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TextBox1.Text = pointsArr_x[puntoselect]
+/ 20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TextBox2.Text = pointsArr_y[puntoselect]
+/ 20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Endif<br>
+Endif<br>
+Catch<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub dwgGrapharea_KeyPress()<br>
+&nbsp; If Key.Code = Key.Enter Then <br>
+&nbsp;&nbsp; dwgGrapharea_MouseUp()<br>
+&nbsp; End If<br>
+End<br>
+<br>
+Public Sub dwgGrapharea_MouseDown()<br>
+Dim I As Integer<br>
+&nbsp;If Button17.Enabled = True And Enable = False Then<br>
+<br>
+For I = 0 To pointsArr_x.Max<br>
+<br>
+&nbsp;If (pointsArr_x[I] &lt; Mouse.X + 10 And pointsArr_x[I] &gt;
+Mouse.X - 10) And (pointsArr_y[I] &lt; Mouse.y + 10 And pointsArr_y[I]
+&gt; Mouse.y - 10) Then <br>
+&nbsp;puntoselect = i<br>
+&nbsp;TextBox1.Text = pointsArr_x[I] / 20<br>
+&nbsp;TextBox2.Text = pointsArr_y[I] / 20<br>
+&nbsp;Endif<br>
+&nbsp;Next<br>
+&nbsp;Endif<br>
+End</p>
+</div>
+<div>
+<h2 style="color: rgb(204, 0, 0);" class="title">PaintObj.Module v2.3<br>
+</h2>
+<p style="text-align: left;"><br>
+</p>
+<p style="text-align: center;"><span style="font-weight: bold;">'(Modulo
+software de graficacion )</span><br>
+</p>
+<p style="text-align: left;">Public ix As Integer<br>
+Public iy As Integer<br>
+Public endredx As Integer<br>
+Public endredy As Integer<br>
+<br>
+Public Sub PUNTOS_RED()<br>
+Dim i As Integer<br>
+Dim p As Integer <br>
+Paint.Begin(FMain.dwgGrapharea)<br>
+For i = 0 To FMain.pointsArr_x.Max<br>
+<br>
+&nbsp;If FMain.pointsArr_x[i] &lt;&gt; 0 And FMain.pointsArr_y[i]
+&lt;&gt; 0 Then<br>
+&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; paint.Brush = paint.Color(Color.Cyan)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p = 1<br>
+<br>
+If i = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p = 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; paint.Brush =
+paint.Color(Color.yellow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Else If i =
+FMain.pointsArr_x.Max Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p = 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+paint.Brush = paint.Color(Color.red)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Else If FMain.pointsArr_x[i - 1] = 0 And FMain.pointsArr_y[i - 1] = 0
+Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p = 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+paint.Brush = paint.Color(Color.yellow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Else If FMain.pointsArr_x[i + 1] = 0 And FMain.pointsArr_y[i + 1] = 0
+Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p = 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+paint.Brush = paint.Color(Color.Green)&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Endif<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Paint.Arc(FMain.pointsArr_x[i],
+FMain.pointsArr_y[i], p)<br>
+&nbsp;&nbsp; Paint.Fill<br>
+&nbsp; Endif<br>
+&nbsp; <br>
+&nbsp; Next<br>
+<br>
+Paint.end<br>
+End<br>
+<br>
+Public Sub regla1()<br>
+<br>
+Paint.Begin(FMain.dwgGrapharea)<br>
+&nbsp;paint.Brush = paint.Color(Color.red)<br>
+&nbsp; Paint.MoveTo(0, FMain.Slider1.Value)<br>
+Paint.LineTo(1100, FMain.Slider1.Value)<br>
+Paint.stroke<br>
+Paint.end<br>
+End<br>
+Public Sub regla2()<br>
+Paint.Begin(FMain.dwgGrapharea)<br>
+&nbsp;paint.Brush = paint.Color(Color.blue)<br>
+&nbsp;Paint.MoveTo(FMain.Slider2.Value, 0)<br>
+Paint.LineTo(FMain.Slider2.Value, 1100)<br>
+Paint.stroke<br>
+Paint.end<br>
+End<br>
+<br>
+Public Sub simular()<br>
+If FMain.Timerx.Enabled = True Then<br>
+Paint.Begin(FMain.dwgGrapharea)<br>
+&nbsp;paint.Brush = paint.Color(Color.Green)<br>
+&nbsp;&nbsp; Try Paint.MoveTo(FMain.pointsArr_x[FMain.ti - 1],
+FMain.pointsArr_y[FMain.ti - 1])<br>
+If FMain.x1x2 &gt; 0 And FMain.y1y2 &gt; 0 Then<br>
+Try Paint.Arc(FMain.pointsArr_x[FMain.ti - 1] + ix,
+FMain.pointsArr_y[FMain.ti - 1] + iy, 8)<br>
+Endif<br>
+If FMain.x1x2 &lt; 0 And FMain.y1y2 &gt; 0 Then<br>
+Try Paint.Arc(FMain.pointsArr_x[FMain.ti - 1] - ix,
+FMain.pointsArr_y[FMain.ti - 1] + iy, 8)<br>
+Endif<br>
+If FMain.x1x2 &gt; 0 And FMain.y1y2 &lt; 0 Then<br>
+Try Paint.Arc(FMain.pointsArr_x[FMain.ti - 1] + ix,
+FMain.pointsArr_y[FMain.ti - 1] - iy, 8)<br>
+Endif<br>
+If FMain.x1x2 &lt; 0 And FMain.y1y2 &lt; 0 Then<br>
+Try Paint.Arc(FMain.pointsArr_x[FMain.ti - 1] - ix,
+FMain.pointsArr_y[FMain.ti - 1] - iy, 8)<br>
+If Error Then FMain.error.Text = "Se recomienda verificar el diseño"<br>
+Endif<br>
+If FMain.lyup = True Then<br>
+Try Paint.Arc(FMain.pointsArr_y[FMain.ti - 1] - iy, 8)<br>
+FMain.lyup = False<br>
+Endif<br>
+Paint.Fill<br>
+Paint.end<br>
+End If<br>
+End<br>
+<br>
+<br>
+Public Sub reglax()<br>
+Paint.Begin(FMain.DrawingArea2)<br>
+&nbsp;paint.Brush = paint.Color(Color.blue)<br>
+&nbsp;Paint.MoveTo(FMain.Slider2.Value, 0)<br>
+Paint.LineTo(FMain.Slider2.Value, 1700)<br>
+Paint.stroke<br>
+Paint.end<br>
+End<br>
+Public Sub reglay()<br>
+Paint.Begin(FMain.DrawingArea1)<br>
+&nbsp;paint.Brush = paint.Color(Color.red)<br>
+&nbsp;Paint.MoveTo(0, FMain.Slider1.Value)<br>
+Paint.LineTo(1700, FMain.Slider1.Value)<br>
+Paint.stroke<br>
+Paint.end<br>
+End<br>
+Public Sub lineas_rectas()<br>
+&nbsp;Dim insertxy As Result<br>
+&nbsp;If FMain.Slider2.Value = 0 And FMain.Slider1.Value = 0 Then<br>
+&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If FMain.Enable = True Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If FMain.solopunto.Value = True
+And FMain.pointsArr_x.Max &lt;&gt; -1 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FMain.Button1_Click() <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Endif <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If
+FMain.pointsArr_x.Count &lt;&gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If
+FMain.Slider2.Value &lt;&gt; FMain.pointsArr_x[FMain.pointsArr_x.Max]
+Or FMain.Slider1.Value &lt;&gt;
+FMain.pointsArr_y[FMain.pointsArr_y.Max] Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.pointsArr_x.Add(FMain.Slider2.Value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.pointsArr_y.Add(FMain.Slider1.Value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.xText.Text = ((FMain.Slider2.Value / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.ytext.Text = ((FMain.Slider1.Value / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+insertxy = Mysql.Conexion.Exec("Insert into Graficos_temp(x, y,nombre)
+values ('" &amp; FMain.Slider2.Value &amp; "','" &amp;
+FMain.Slider1.Value &amp; "', '" &amp; FMain.Label8.text &amp; "')") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.dwgGrapharea.Refresh<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Endif<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.pointsArr_x.Add(FMain.Slider2.Value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.pointsArr_y.Add(FMain.Slider1.Value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.xText.Text = ((FMain.Slider2.Value / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.ytext.Text = ((FMain.Slider1.Value / 2) / 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; insertxy =
+Mysql.Conexion.Exec("Insert into Graficos_temp(x, y,nombre) values ('"
+&amp; FMain.Slider2.Value &amp; "','" &amp; FMain.Slider1.Value &amp;
+"', '" &amp; FMain.Label8.text &amp; "')") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FMain.dwgGrapharea.Refresh <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp;Endif<br>
+End</p>
+</div>
+<div>
+<h2 style="color: rgb(0, 0, 177);" class="title">Login.class v1.1<br>
+</h2>
+<br>
+<p style="text-align: center; font-weight: bold;">'(Clace,
+control de acceso de Usuario)</p>
+<p style="text-align: center;"><br>
+</p>
+<p style="text-align: left;">Public Sub Form_Open()<br>
+CtrlManual.puerto = Open "/dev/port" For Write<br>
+CtrlManual.Timer1_Timer()<br>
+CtrlManual.offtodos_Click()<br>
+CtrlManual.stop_Click()<br>
+&nbsp; Me.Center<br>
+Mysql.CONECTAR_BD()<br>
+Label2.Text = Mysql.softwareandvercion<br>
+End<br>
+Public Sub Button1_Click()<br>
+Me.Close<br>
+End<br>
+<br>
+Public Sub Button2_Click()<br>
+Me.Minimized = True<br>
+End<br>
+<br>
+Public Sub TextBox1_Change()<br>
+Dim verificar As Result<br>
+&nbsp;verificar = Mysql.Conexion.Exec("Select NOMBRE from Usuario where
+NOMBRE = '" &amp; TextBox1.Text &amp; "'")<br>
+&nbsp;If verificar.Count &lt;&gt; 0 Then<br>
+&nbsp;Label1.Text = "CONTRASEÑA"<br>
+&nbsp;TextBox2.Visible = True<br>
+TextBox2.SetFocus<br>
+passview.Visible = True<br>
+&nbsp; nombre.Text = verificar[0]<br>
+Mysql.Usuarionombre = verificar[0]<br>
+&nbsp;&nbsp; Endif<br>
+&nbsp;End<br>
+&nbsp;Public Sub TextBox2_Change()<br>
+Dim verificarP As Result<br>
+If TextBox2.Text = "" Then<br>
+passview.Enabled = False<br>
+Else<br>
+&nbsp; passview.Enabled = True<br>
+Endif<br>
+&nbsp; verificarP = Mysql.Conexion.Exec("Select PASS from Usuario where
+PASS = '" &amp; TextBox2.Text &amp; "'")<br>
+&nbsp;&nbsp; If verificarP.Count &lt;&gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Mysql.Cerrar_BD<br>
+&nbsp;AbrirProyect.Show<br>
+&nbsp;Me.Close<br>
+&nbsp;Endif<br>
+&nbsp;End<br>
+<br>
+Public Sub passview_Click()<br>
+If passview.Value = True Then <br>
+&nbsp; TextBox2.Password = False<br>
+&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp; TextBox2.Password = True<br>
+Endif<br>
+End<br>
+</p>
+</div>
+<div>
+<h2 style="color: rgb(0, 0, 153);" class="title">CuenstasUser.Class v1.0<br>
+</h2>
+<br>
+<span style="font-weight: bold;">'(Clase
+de controlo de cuentas de usuario)</span><br>
+<div style="text-align: left;">
+<br>
+Public Sub TextBox1_KeyPress()<br>
+If Key.Code = 16777220 Then<br>
+If CuentasUser.TextBox1.text = "" Then<br>
+info.Text = "Ingrese un nombre de usuario "<br>
+Else<br>
+&nbsp; ComboBox1.SetFocus<br>
+&nbsp; End If<br>
+&nbsp; End If<br>
+End<br>
+<br>
+Public Sub ComboBox1_KeyPress()<br>
+&nbsp; If Key.Code = 16777220 Then<br>
+&nbsp; TextBox2.SetFocus<br>
+&nbsp; End If<br>
+End<br>
+<br>
+Public Sub TextBox2_KeyPress()<br>
+&nbsp; If Key.Code = 16777220 Then<br>
+If CuentasUser.TextBox1.text = "" Then<br>
+info.Text = "Ingrese una contraseña "<br>
+Else<br>
+&nbsp; TextBox3.SetFocus<br>
+&nbsp; End If<br>
+&nbsp; End If<br>
+End<br>
+Public Sub TextBox3_KeyPress()<br>
+&nbsp; If Key.Code = 16777220 Then<br>
+If CuentasUser.TextBox3.text = "" Then<br>
+info.Text = "Repita la Contraseña "<br>
+Else<br>
+&nbsp; Button1_Click<br>
+&nbsp; End If<br>
+&nbsp; End If<br>
+End<br>
+<br>
+<br>
+Public Sub Button1_Click()<br>
+Dim Nupdate As Result<br>
+&nbsp; Me.Center<br>
+&nbsp; Panel2.Y = -60<br>
+Panel3.Y = -60<br>
+Panel4.Y = -60<br>
+Panel5.Y = -60<br>
+&nbsp; Timer2.Enabled = True<br>
+If TextBox1.text = "" Then<br>
+info.Text = "Ingrese un nombre de usuario"<br>
+Else If TextBox2.text &lt;&gt; TextBox3.Text Then<br>
+info.Text = "Las contraseñas no coinciden "<br>
+Else<br>
+Nupdate = Mysql.Conexion.Exec("Insert into Usuario(NOMBRE, CARGO, PASS)
+values ('" &amp; TextBox1.Text &amp; "','" &amp; ComboBox1.text &amp;
+"','" &amp; Textbox2.text &amp; "' )")<br>
+Message.Info("Cuenta Agregada con exito ")<br>
+Catch<br>
+Message.Info("Ya hay otra cuenta con ese nombre de Usuario ")<br>
+CuentasUser.Close<br>
+CuentasUser.Show<br>
+End If <br>
+End<br>
+<br>
+<br>
+Public Sub Form_Open()<br>
+Panel2.Y = -60<br>
+Panel3.Y = -60<br>
+Panel4.Y = -60<br>
+Panel5.Y = -60<br>
+&nbsp;Timer2.Enabled = True<br>
+&nbsp;COMBOCARGAR()<br>
+End<br>
+<br>
+Public Sub Button2_Click()<br>
+Dim varresult As Result<br>
+Dim varresultt As Result<br>
+Dim li As String<br>
+Try Mysql.CONECTAR_BD<br>
+If TextBox4.Text = "" Or DataComboView1.Text = "" Then <br>
+info2.Text = "Complete todos los campos "<br>
+Else<br>
+varresultt = Mysql.Conexion.Exec("Select CARGO From Usuario where PASS
+=&nbsp; '" &amp; TextBox4.Text &amp; "'")<br>
+If varresultt.Count = 0 Then<br>
+info2.Text = "Contraseña incorrecta"<br>
+Else<br>
+li = varresultt[0]<br>
+If li = "Administrador" Or li = "Root" Then<br>
+&nbsp;&nbsp; varresult = Mysql.Conexion.Exec("DELETE FROM Usuario WHERE
+NOMBRE =&nbsp; '" &amp; DataComboView1.Text &amp; "' ")<br>
+&nbsp;&nbsp; COMBOCARGAR<br>
+&nbsp;&nbsp; info2.Text = "Ok"<br>
+Else If li = "Limitado" Then<br>
+&nbsp;&nbsp; info2.Text = "No posee permiso parar Eliminar CuentasUser "<br>
+Endif<br>
+Endif<br>
+Endif<br>
+Catch<br>
+Me.Close<br>
+CuentasUser.Show<br>
+End<br>
+<br>
+<br>
+Public Sub TabStrip1_Click()<br>
+End<br>
+<br>
+Public Sub Button4_Click()<br>
+Me.Minimized = True<br>
+<br>
+End<br>
+<br>
+<br>
+Public Sub Label1_MouseMove()<br>
+<br>
+Me.X = (Mouse.ScreenX)<br>
+&nbsp;Wait 0.002<br>
+Me.Y = (Mouse.ScreenY)<br>
+<br>
+End<br>
+<br>
+Public Sub Timer2_Timer()<br>
+<br>
+If Panel2.Y &lt; 8 Then<br>
+&nbsp; Panel2.Y = Panel2.Y + 4<br>
+End If<br>
+If Panel3.Y &lt; 72 Then<br>
+&nbsp; Panel3.Y = Panel3.Y + 4<br>
+End If<br>
+If Panel4.Y &lt; 136 Then<br>
+&nbsp; Panel4.Y = Panel4.Y + 4<br>
+End If<br>
+If Panel5.Y &lt; 200 Then<br>
+&nbsp; Panel5.Y = Panel5.Y + 4<br>
+End If<br>
+If Panel5.Y = 200 Or Panel5.Y &gt; 200 Then Timer2.Enabled = False<br>
+End<br>
+<br>
+Public Sub COMBOCARGAR()<br>
+Dim i As Integer<br>
+Dim varresult As Result<br>
+Mysql.CONECTAR_BD()<br>
+&nbsp; varresult = Mysql.Conexion.Exec("select NOMBRE from Usuario")<br>
+For i = 0 To varresult.Count Step 1<br>
+varresult.MoveNext<br>
+Try DataComboView1.Add(varresult[0])<br>
+Next<br>
+Me.Center<br>
+Mysql.Cerrar_BD<br>
+End<br>
+<br>
+Public Sub Cerrar_Click()<br>
+&nbsp; Me.Close<br>
+End<br>
+<br>
+Public Sub Minimizar_Click()<br>
+&nbsp; Me.Minimized = True<br>
+End<br>
+<br>
+</div>
+</div>
+<div>
+<h2 style="color: rgb(204, 0, 0);" class="title">bdArray.Module v1.2<br>
+</h2>
+<div style="text-align: left;"><br>
+<div style="text-align: center;">
+<big style="font-weight: bold;"><small>'(Modulo Guarda las coodenadas
+de un
+proyecto en la base de datos, software de graficacion )</small></big><br>
+</div>
+<big style="font-weight: bold;">
+<br>
+</big>Public selecttemp As Result<br>
+Public AT As Integer<br>
+<br>
+Public Sub Borrar()<br>
+FMain.pointsArr_x.Clear<br>
+FMain.pointsArr_y.Clear<br>
+End<br>
+Public Sub BorrarTodo()<br>
+<br>
+Dim borrartemp As Result<br>
+FMain.pointsArr_x.Clear<br>
+FMain.pointsArr_y.Clear<br>
+&nbsp;borrartemp = Mysql.Conexion.Exec("truncate table Graficos_temp")<br>
+<br>
+End<br>
+<br>
+Public Sub IR_ADELANTE()<br>
+Dim selecttx As Result<br>
+Dim selectty As Result<br>
+Dim MatrisCOUNT As Integer <br>
+Dim i As Integer<br>
+<br>
+MatrisCOUNT = FMain.pointsArr_x.Count<br>
+Borrar<br>
+selecttx = Mysql.Conexion.Exec("select x from Graficos_temp where
+nombre ='" &amp; FMain.Label8.text &amp; "' ")<br>
+selectty = Mysql.Conexion.Exec("select y from Graficos_temp where
+nombre ='" &amp; FMain.Label8.text &amp; "' ")<br>
+If MatrisCOUNT &lt; selecttx.Count Then<br>
+For i = 1 To MatrisCOUNT + 1 Step 1<br>
+&nbsp;FMain.pointsArr_x.Add(selecttx[0])<br>
+&nbsp;FMain.pointsArr_y.Add(selectty[0])<br>
+selecttx.MoveNext<br>
+selectty.MoveNext<br>
+&nbsp;&nbsp; Next<br>
+Else<br>
+&nbsp; For i = 1 To MatrisCOUNT Step 1<br>
+&nbsp;FMain.pointsArr_x.Add(selecttx[0])<br>
+&nbsp;FMain.pointsArr_y.Add(selectty[0])<br>
+selecttx.MoveNext<br>
+selectty.MoveNext<br>
+&nbsp;&nbsp; Next<br>
+Endif<br>
+FMain.dwgGrapharea.Refresh<br>
+<br>
+End<br>
+<br>
+Public Sub IR_ATRAS()<br>
+Dim selecttx As Result<br>
+Dim selectty As Result<br>
+Dim MatrisCOUNT As Integer <br>
+Dim i As Integer<br>
+<br>
+MatrisCOUNT = FMain.pointsArr_x.Count<br>
+Borrar<br>
+selecttx = Mysql.Conexion.Exec("select x from Graficos_temp where
+nombre ='" &amp; FMain.Label8.text &amp; "' ")<br>
+selectty = Mysql.Conexion.Exec("select y from Graficos_temp where
+nombre ='" &amp; FMain.Label8.text &amp; "' ")<br>
+<br>
+For i = 1 To MatrisCOUNT - 1 Step 1<br>
+&nbsp;FMain.pointsArr_x.Add(selecttx[0])<br>
+&nbsp;FMain.pointsArr_y.Add(selectty[0])<br>
+selecttx.MoveNext<br>
+selectty.MoveNext<br>
+&nbsp;&nbsp; Next<br>
+&nbsp; &nbsp;<br>
+<br>
+FMain.dwgGrapharea.Refresh<br>
+<br>
+End<br>
+Public Sub save()<br>
+Dim saveproyecto As Result<br>
+Dim vaciar As Result<br>
+Dim actualizarf As Result<br>
+Dim i As Integer<br>
+vaciar = Mysql.Conexion.Exec("delete from Graficos where nombre = '"
+&amp; FMain.Label8.text &amp; "'")<br>
+For i = 0 To FMain.pointsArr_x.Max Step 1<br>
+&nbsp;&nbsp; saveproyecto = Mysql.Conexion.Exec("Insert into
+Graficos(x, y,fecha,usuario,nombre) values ('" &amp;
+FMain.pointsArr_x[i] &amp; "','" &amp; FMain.pointsArr_y[i] &amp; "',
+Date(Now()),'" &amp; Mysql.Usuarionombre &amp; "','" &amp;
+FMain.Label8.text &amp; "' )")<br>
+&nbsp;&nbsp; actualizarf = Mysql.Conexion.Exec("Update Proyecto SET
+fecha_f=&nbsp; Date(Now()) where Proyecto_nombre = '" &amp;
+Mysql.Proyectonombre &amp; "'")<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Next<br>
+End<br>
+Public Sub borrar_temp()<br>
+&nbsp; Dim borrartempbd As Result<br>
+&nbsp; borrartempbd = Mysql.Conexion.Exec("delete from Graficos_temp
+where nombre = '" &amp; FMain.Label8.text &amp; "'")<br>
+&nbsp; End<br>
+Public Sub contartemp()<br>
+<br>
+&nbsp;selecttemp = Mysql.Conexion.Exec("select x from Graficos_temp
+where nombre = '" &amp; FMain.Label8.text &amp; "' ") <br>
+<br>
+End<br>
+Public Sub cargartemp()<br>
+Dim insertxy As Result<br>
+Dim f As Integer<br>
+borrar_temp()<br>
+<br>
+&nbsp;For f = 0 To FMain.pointsArr_x.Count<br>
+insertxy = Mysql.Conexion.Exec("Insert into Graficos_temp(x, y,nombre)
+values ('" &amp; FMain.pointsArr_x[f] &amp; "','" &amp;
+FMain.pointsArr_y[f] &amp; "', '" &amp; FMain.Label8.text &amp; "')") <br>
+Next<br>
+Catch<br>
+End</div>
+</div>
+<div>
+<h2 style="color: rgb(204, 0, 0);" class="title">Mysql.Module v1.1<br>
+</h2>
+<br>
+<br>
+<div style="text-align: left;">
+<div style="text-align: center;"><span style="font-weight: bold;">'(Modulo,
+conexion con Mysql server)</span><br>
+</div>
+<br>
+Public Usuarionombre As String<br>
+Public Proyectonombre As String<br>
+Public Conexion As New Connection<br>
+Public software As String<br>
+Public vercion As String<br>
+Public softwareandvercion As String<br>
+Public Sub CONECTAR_BD()<br>
+'----------------------------------<br>
+software = "OPTIMUS CNCAD "<br>
+vercion = "V:1.01"<br>
+softwareandvercion = software &amp; vercion<br>
+'----------------------------------<br>
+Conexion.Close&nbsp; <br>
+Conexion.User = "root"<br>
+Conexion.Password = "funckoffx"<br>
+Conexion.Name = "RouterCnc"<br>
+Conexion.Type = "Mysql"<br>
+Conexion.host = "localhost"<br>
+Conexion.Open<br>
+AbrirProyect.DataSource1.Connection = Conexion<br>
+AbrirProyect.DataSource1.Table = ("Proyecto")<br>
+NuevoProyect.DataSource2.Connection = Conexion<br>
+NuevoProyect.DataSource2.Table = ("Proyecto")<br>
+<br>
+End<br>
+Public Sub Cerrar_BD()<br>
+Conexion.Close&nbsp; <br>
+&nbsp; End<br>
+</div>
+</div>
+<div>
+<h2 class="title"><span style="color: rgb(0, 0, 153);">NuevoProyect.Class
+v1.2</span><br>
+</h2>
+<br>
+<div style="text-align: left;">
+<div style="text-align: center;"><span style="font-weight: bold;">'(Clase
+crear un nuevo proyecto, Software de graficacion)</span><br>
+</div>
+<br>
+Public Selectt As Result<br>
+Public Sub Form_Open()<br>
+Try Mysql.CONECTAR_BD<br>
+Nuevo.SetFocus<br>
+Me.Center<br>
+P1.Y = -180<br>
+P4.Y = -60<br>
+DataBrowser1_MouseDown<br>
+Label1.Text = Mysql.Usuarionombre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<br>
+End<br>
+<br>
+Public Sub TextBox1_GotFocus()<br>
+TextBox1.Text = ""<br>
+TextBox1.Foreground = Color.White<br>
+End<br>
+<br>
+Public Sub TextBox1_LostFocus()<br>
+If TextBox1.Text = "" Then<br>
+TextBox1.Text = "Buscar"<br>
+TextBox1.Foreground = Color.Gray<br>
+Endif<br>
+End<br>
+<br>
+<br>
+<br>
+<br>
+Public Sub DataBrowser1_MouseDown()<br>
+P1.Y = -180<br>
+P4.Y = -60<br>
+<br>
+Timer1.Enabled = True<br>
+Timer2.Enabled = True<br>
+TextBox2.Text = DataControl1.value<br>
+&nbsp;L1.Visible = True<br>
+C1.Visible = True<br>
+If DataControl4.Value = 1 Then<br>
+c1.Value = True <br>
+Else<br>
+C1.Value = False<br>
+Endif<br>
+End<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Public Sub Label2_MouseMove()<br>
+<br>
+Me.X = (Mouse.ScreenX)<br>
+&nbsp;Wait 0.002<br>
+Me.Y = (Mouse.ScreenY)<br>
+<br>
+End<br>
+<br>
+<br>
+<br>
+<br>
+Public Sub Button1_Click()<br>
+Me.Close<br>
+End<br>
+<br>
+<br>
+Public Sub Button2_Click()<br>
+<br>
+Me.Minimized = True<br>
+<br>
+End<br>
+<br>
+Public Sub Timer1_Timer()<br>
+If PictureBox1.X &lt;&gt; 1700 Then <br>
+PictureBox1.X = PictureBox1.X + 10<br>
+Else<br>
+Timer1.Enabled = False<br>
+Endif<br>
+<br>
+End<br>
+<br>
+Public Sub Timer2_Timer()<br>
+<br>
+If P1.Y &lt; 72 Then<br>
+&nbsp; P1.Y = P1.Y + 6<br>
+End If<br>
+If P4.Y &lt; 208 Then<br>
+&nbsp; P4.Y = P4.Y + 6<br>
+End If<br>
+If P4.Y = 208 Or P4.Y &gt; 208 Then Timer2.Enabled = False<br>
+<br>
+End<br>
+<br>
+Public Sub Nuevo_Click()<br>
+Dim seleccionar As Result<br>
+Dim selecttx As Result<br>
+Dim selectty As Result<br>
+Dim borrartemp As Result<br>
+Dim i As Integer<br>
+Dim nuevo As Result<br>
+Selectt = Mysql.Conexion.Exec("Select * From Proyecto where
+Proyecto_nombre='" &amp; TextBox2.Text &amp; "'")<br>
+If TextBox2.Text = "" Then<br>
+Message.Warning("Escriba un nombre para el nuevo proyecto")<br>
+Else<br>
+If Selectt.Count = 1 Then<br>
+&nbsp;Message.Warning("Ya existe un proyecto con este nombre")<br>
+Else<br>
+If TextBox2.Text &lt;&gt; "" And Selectt.Max &lt;&gt; 1 Then<br>
+&nbsp;&nbsp; borrartemp = Mysql.Conexion.Exec("truncate table
+Graficos_temp")<br>
+nuevo = Mysql.Conexion.Exec("Insert into Proyecto(Proyecto_nombre,
+fecha_i, fecha_f, Usuario) values ('" &amp; TextBox2.Text &amp; "',
+Date(Now()), Date(Now()),'" &amp; label1.Text &amp; "')")<br>
+DataSource2.Table = "Proyecto"<br>
+DataSource2.Refresh<br>
+seleccionar = Mysql.Conexion.Exec("select nombre from Graficos where
+nombre = '" &amp; TextBox2.Text &amp; "' ")<br>
+Mysql.Proyectonombre = TextBox2.Text<br>
+FMain.Show<br>
+FMain.num_menos = FMain.num_menos + 1<br>
+FMain.num_mas = 0<br>
+bdArray.Borrar<br>
+selecttx = Mysql.Conexion.Exec("select x from Graficos where nombre =
+'" &amp; TextBox2.Text &amp; "' ")<br>
+selectty = Mysql.Conexion.Exec("select y from Graficos&nbsp; where
+nombre = '" &amp; TextBox2.Text &amp; "' ")<br>
+FMain.maxx = selecttx.Count<br>
+FMain.maxx = FMain.maxx - FMain.num_menos<br>
+For i = 1 To FMain.maxx Step 1<br>
+&nbsp;FMain.pointsArr_x.Add(selecttx[0])<br>
+&nbsp;FMain.pointsArr_y.Add(selectty[0])<br>
+selecttx.MoveNext<br>
+selectty.MoveNext<br>
+&nbsp;&nbsp; Next<br>
+&nbsp;&nbsp; Me.Close<br>
+Else<br>
+Endif <br>
+Endif<br>
+Endif <br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub cerrar_Click()<br>
+Me.Close<br>
+End<br>
+<br>
+<br>
+Public Sub Nuevo2_Click()<br>
+Me.Close<br>
+Mysql.Cerrar_BD<br>
+AbrirProyect.Show<br>
+<br>
+End<br>
+<br>
+Public Sub Borrar_Click()<br>
+Dim borrarProyecto As Result<br>
+If TextBox2.Text = "" Then<br>
+Message.Info("No se seleciono ningun proyecto")<br>
+Else<br>
+Select Message.Question("¿ Desea borrar completamente el Proyecto "
+&amp; TextBox2.Text &amp; "&nbsp; ? ", " Sí", "No")<br>
+Case 1<br>
+borrarProyecto = Mysql.Conexion.Exec("delete from Proyecto where
+Proyecto_nombre = '" &amp; TextBox2.Text &amp; "' ")<br>
+borrarProyecto = Mysql.Conexion.Exec("delete from Graficos where nombre
+= '" &amp; TextBox2.Text &amp; "' ")<br>
+borrarProyecto = Mysql.Conexion.Exec("delete from Graficos_temp where
+nombre = '" &amp; TextBox2.Text &amp; "' ")<br>
+DataBrowser1.Refresh<br>
+Catch<br>
+Case 2<br>
+&nbsp; End Select<br>
+Endif<br>
+End<br>
+<br>
+Public Sub ToggleButton2_Click()<br>
+<br>
+DataSource2.Filter = ("Usuario = '" &amp; Label1.Text &amp; "' ")<br>
+<br>
+End<br>
+<br>
+Public Sub ToggleButton1_Click()<br>
+<br>
+DataSource2.Filter = ("")<br>
+End<br>
+<br>
+Public Sub TextBox1_KeyRelease()<br>
+&nbsp; DataSource2.Filter = ("match(Proyecto_nombre)against('" &amp;
+TextBox1.Text &amp; "') ")<br>
+<br>
+&nbsp; If TextBox1.Text = "" Then<br>
+&nbsp;&nbsp; DataSource2.Filter = ("")<br>
+&nbsp;&nbsp; Endif<br>
+<br>
+End</div>
+</div>
+<div>
+<h2 style="color: rgb(0, 0, 153);" class="title">AbrirProyect.Class v1.8</h2>
+
+<br>
+<div style="text-align: left;">
+<div style="text-align: center;"><span style="font-weight: bold;">'(Clase
+abrir un proyecto desde la base de datos, o desde archivo )<br>
+<br>
+</span></div>
+Public xx As New String[]<br>
+Public yy As New String[]<br>
+Public contenidox As String<br>
+&nbsp;Public contenidoy As String<br>
+<br>
+Public Sub Form_Open()<br>
+Mysql.CONECTAR_BD<br>
+abrir.SetFocus<br>
+P1.Y = -60<br>
+P2.Y = -60<br>
+P3.Y = -60<br>
+P4.Y = -60<br>
+Me.Center<br>
+Label5.Text = Mysql.Usuarionombre<br>
+End<br>
+<br>
+Public Sub buss_GotFocus()<br>
+buss.Text = ""<br>
+buss.Foreground = Color.White<br>
+End<br>
+<br>
+Public Sub buss_LostFocus()<br>
+If buss.Text = "" Then<br>
+buss.Text = "Buscar"<br>
+buss.Foreground = Color.Gray<br>
+Endif<br>
+End<br>
+<br>
+Public Sub DataBrowser1_MouseDown()<br>
+P1.Y = -60<br>
+P2.Y = -60<br>
+P3.Y = -60<br>
+P4.Y = -60<br>
+<br>
+Timer1.Enabled = True<br>
+Timer2.Enabled = True<br>
+<br>
+&nbsp;L1.Visible = True<br>
+L2.Visible = True<br>
+L3.Visible = True<br>
+L4.Visible = True<br>
+L5.Visible = True<br>
+L6.Visible = True<br>
+C1.Visible = True<br>
+L2.Text = DataControl1.Value<br>
+L4.Text = DataControl2.Value<br>
+l6.Text = DataControl3.Value<br>
+If DataControl4.Value = 1 Then<br>
+c1.Value = True <br>
+Else<br>
+C1.Value = False<br>
+Endif<br>
+End<br>
+<br>
+Public Sub Label2_MouseMove()<br>
+<br>
+AbrirProyect.X = (Mouse.ScreenX)<br>
+&nbsp;Wait 0.002<br>
+AbrirProyect.Y = (Mouse.ScreenY)<br>
+<br>
+End<br>
+<br>
+Public Sub Button1_Click()<br>
+Me.Close<br>
+End<br>
+<br>
+Public Sub Button2_Click()<br>
+Me.Minimized = True<br>
+End<br>
+<br>
+Public Sub Timer1_Timer()<br>
+If PictureBox1.X &lt;&gt; 1700 Then <br>
+PictureBox1.X = PictureBox1.X + 10<br>
+Else<br>
+Timer1.Enabled = False<br>
+Endif<br>
+End<br>
+<br>
+Public Sub Timer2_Timer()<br>
+If P1.Y &lt; 72 Then<br>
+&nbsp; P1.Y = P1.Y + 4<br>
+End If<br>
+If P2.Y &lt; 128 Then<br>
+&nbsp; P2.Y = P2.Y + 4<br>
+End If<br>
+If P3.Y &lt; 184 Then<br>
+&nbsp; P3.Y = P3.Y + 4<br>
+End If<br>
+If P4.Y &lt; 240 Then<br>
+&nbsp; P4.Y = P4.Y + 4<br>
+End If<br>
+If P4.Y = 240 Or P4.Y &gt; 240 Then Timer2.Enabled = False<br>
+End<br>
+<br>
+Public Sub abrir_Click()<br>
+Dim selecttx As Result<br>
+Dim selectty As Result<br>
+Dim loadtemp As Result<br>
+Dim borrartemp As Result<br>
+Dim i As Integer<br>
+If DataControl1.value = "" Then <br>
+Message.Info("Selecione un proyecto")<br>
+Else<br>
+Mysql.Proyectonombre = L2.Text<br>
+<br>
+FMain.Show<br>
+FMain.num_menos = FMain.num_menos + 1<br>
+FMain.num_mas = 0<br>
+bdArray.Borrar<br>
+selecttx = Mysql.Conexion.Exec("select x from Graficos where nombre =
+'" &amp; DataControl1.value &amp; "' ")<br>
+selectty = Mysql.Conexion.Exec("select y from Graficos&nbsp; where
+nombre = '" &amp; DataControl1.value &amp; "' ")<br>
+borrartemp = Mysql.Conexion.Exec("truncate table Graficos_temp")<br>
+loadtemp = Mysql.Conexion.Exec("INSERT INTO Graficos_temp
+(x,y,id,fecha,usuario,nombre )Select x, y, id,fecha,usuario,nombre From
+Graficos WHERE nombre ='" &amp; DataControl1.value &amp; "'")<br>
+FMain.maxx = selecttx.Count<br>
+FMain.maxx = FMain.maxx - FMain.num_menos<br>
+For i = 1 To FMain.maxx + 1 Step 1<br>
+&nbsp;FMain.pointsArr_x.Add(selecttx[0])<br>
+&nbsp;FMain.pointsArr_y.Add(selectty[0])<br>
+selecttx.MoveNext<br>
+selectty.MoveNext<br>
+&nbsp;&nbsp; Next<br>
+&nbsp; FMain.Form_Open<br>
+&nbsp; FMain.num_menos = 0<br>
+&nbsp;&nbsp; Me.Close<br>
+Endif<br>
+End<br>
+<br>
+Public Sub cerrar_Click()<br>
+Me.Close<br>
+Mysql.Cerrar_BD<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub cerrar2_Click()<br>
+Me.Close<br>
+Mysql.Cerrar_BD<br>
+NuevoProyect.Show<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub ToggleButton2_Click()<br>
+&nbsp; DataSource1.Filter = ("Usuario = '" &amp; Label5.Text &amp; "' ")<br>
+End<br>
+<br>
+Public Sub ToggleButton1_Click()<br>
+&nbsp; DataSource1.Filter = ("")<br>
+End<br>
+<br>
+Public Sub buss_KeyRelease()<br>
+&nbsp; DataSource1.Filter = ("match(Proyecto_nombre)against('" &amp;
+buss.Text &amp; "') ")<br>
+&nbsp; If buss.Text = "" Then<br>
+&nbsp;&nbsp; DataSource1.Filter = ("")<br>
+&nbsp;&nbsp; Endif<br>
+End<br>
+&nbsp; <br>
+Public Sub abrir2_Click()<br>
+Dim i As Integer<br>
+Dim datos As New String[]<br>
+Dim proyecto As String<br>
+<br>
+&nbsp;FMain.pointsArr_x.Clear<br>
+&nbsp;FMain.pointsArr_y.Clear<br>
+&nbsp;<br>
+Dialog.Filter = ["*.cnc", "Archivo CNCAD"]<br>
+<br>
+<br>
+&nbsp;If Dialog.OpenFile() Then Return<br>
+&nbsp;<br>
+<br>
+proyecto = File.Load(Dialog.Path)<br>
+contenidox = File.load(Dialog.Path &amp; "x")<br>
+&nbsp;contenidoy = File.load(Dialog.Path &amp; "y")<br>
+xx.Clear<br>
+&nbsp;yy.Clear<br>
+datos = Split(proyecto, "/")<br>
+&nbsp; xx = Split(contenidox, "-")<br>
+&nbsp;&nbsp;&nbsp; yy = Split(contenidoy, "-")<br>
+&nbsp;&nbsp;&nbsp; <br>
+Mysql.Proyectonombre = (datos[1])<br>
+&nbsp; For i = 0 To xx.Max<br>
+&nbsp; FMain.pointsArr_x.Add(CFloat(xx[i]))<br>
+&nbsp; Next<br>
+&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; For i = 0 To yy.Max<br>
+&nbsp;&nbsp;&nbsp; FMain.pointsArr_y.Add(CFloat(yy[i]))<br>
+&nbsp;&nbsp;&nbsp; Next<br>
+&nbsp;FMain.Form_Open<br>
+&nbsp;&nbsp;&nbsp; FMain.Show<br>
+<br>
+End<br>
+</div>
+<p>.</p>
+</div>
+<div style="text-align: left;">
+<h2 style="text-align: center; color: red;" class="title">Stepper.Module
+v1.0<br>
+</h2>
+<br>
+<div style="text-align: center;"><span style="font-weight: bold;">(Modulo
+secuecias para Motor eje X e Y,&nbsp; driver)</span><br>
+<br>
+</div>
+Public timeM0 As Float<br>
+&nbsp; Public ciclosM0 As Integer<br>
+&nbsp; Public timeM1 As Float<br>
+&nbsp; Public ciclosM1 As Integer<br>
+&nbsp; Public a As Integer<br>
+&nbsp;&nbsp; Public b As Integer<br>
+&nbsp; Public timex As Float<br>
+&nbsp; Public timey As Float<br>
+&nbsp; Public progres As Float<br>
+&nbsp;&nbsp;&nbsp; Public progrest As Float<br>
+&nbsp; Public tiempo As Float<br>
+&nbsp; <br>
+Public Sub derechax()<br>
+ciclosM0 = Val(CtrlManual.TextBox1.text)<br>
+timeM0 = Val(CtrlManual.TextBox2.text)<br>
+timex = Val(CtrlManual.TextBox5.text)<br>
+<br>
+While a &lt;&gt; ciclosM0<br>
+&nbsp;&nbsp;&nbsp; If CtrlManual.Stopp1 = True Then<br>
+&nbsp; offcanal0()<br>
+&nbsp; CtrlManual.Stopp1 = False<br>
+Return<br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp; <br>
+&nbsp; Wait timeM0<br>
+<br>
+&nbsp; <br>
+&nbsp; offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 8<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = CtrlManual.salida Or 2<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM0<br>
+&nbsp; <br>
+&nbsp; offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 8<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 1 <br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte&nbsp;<br>
+&nbsp;<br>
+&nbsp; Wait timeM0<br>
+&nbsp; <br>
+&nbsp; offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 4<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 1<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM0<br>
+&nbsp; <br>
+&nbsp; offcanal0()<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 4<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 2<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+<br>
+&nbsp; a = a + 1<br>
+Wend<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 0<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;a = 0<br>
+<br>
+End<br>
+Public Sub izquierdax()<br>
+ciclosM0 = Val(CtrlManual.TextBox1.text)<br>
+timeM0 = Val(CtrlManual.TextBox2.text)<br>
+timex = Val(CtrlManual.TextBox5.text)<br>
+<br>
+While a &lt;&gt; ciclosM0<br>
+&nbsp; If CtrlManual.Stopp1 = True Then<br>
+&nbsp; offcanal0()<br>
+&nbsp; CtrlManual.Stopp1 = False<br>
+Return<br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp; <br>
+&nbsp; Wait timeM0<br>
+<br>
+&nbsp;&nbsp; offcanal0()<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 4<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 2<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM0<br>
+&nbsp; <br>
+&nbsp;&nbsp; offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 4<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 1<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+<br>
+&nbsp; Wait timeM0<br>
+&nbsp; <br>
+&nbsp; offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 8<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 1 <br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM0<br>
+&nbsp; <br>
+&nbsp;&nbsp; offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 8<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = CtrlManual.salida Or 2<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp; a = a + 1<br>
+Wend<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 0<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;a = 0<br>
+End<br>
+<br>
+Public Sub derechay()<br>
+<br>
+ciclosM1 = Val(CtrlManual.TextBox3.text)<br>
+timeM1 = Val(CtrlManual.TextBox4.text)<br>
+timey = Val(CtrlManual.TextBox6.text)<br>
+<br>
+While b &lt;&gt; ciclosM1<br>
+&nbsp; If CtrlManual.Stopp = True Then<br>
+&nbsp; offcanal1()<br>
+&nbsp; CtrlManual.Stopp = False<br>
+Return<br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp; <br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 128<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = CtrlManual.salida Or 32<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 128<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 16 <br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 64<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 16<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 64<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 32<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+<br>
+&nbsp; b = b + 1<br>
+Wend<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 0<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;b = 0<br>
+<br>
+End<br>
+<br>
+Public Sub izquierday()<br>
+ciclosM1 = Val(CtrlManual.TextBox3.text)<br>
+timeM1 = Val(CtrlManual.TextBox4.text)<br>
+timey = Val(CtrlManual.TextBox6.text)<br>
+<br>
+While b &lt;&gt; ciclosM1<br>
+&nbsp;&nbsp; If CtrlManual.Stopp = True Then<br>
+&nbsp; offcanal1()<br>
+&nbsp; CtrlManual.Stopp = False<br>
+Return<br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp; <br>
+&nbsp; Wait timeM1<br>
+&nbsp;&nbsp; offcanal1()<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 64<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 32<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 64<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 16 <br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 128<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 16<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait timeM1<br>
+&nbsp; <br>
+<br>
+&nbsp;<br>
+&nbsp; offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida Or 128<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = CtrlManual.salida Or 32<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+<br>
+&nbsp; b = b + 1<br>
+Wend<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 0<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;b = 0<br>
+End<br>
+<br>
+Public Sub offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 8)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 4)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 2)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 1)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+End<br>
+Public Sub offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 128)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 64)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 32)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = CtrlManual.salida And (255 - 16)<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+End<br>
+Public Sub XHY()<br>
+Dim p As Integer<br>
+Calcular.autocalculo<br>
+'/////////////////////////////////////////<br>
+Calcular.monitorV<br>
+'////////////////////////////////////////<br>
+Wait 1<br>
+Calcular.ASIGNARXANDY<br>
+Calcular.ProcessInX <br>
+Calcular.ProcessInY<br>
+If CtrlManual.Chk2.Value = True Or CtrlManual.Chk1.Value = False Then<br>
+Calcular.sumarXHY<br>
+Else<br>
+Calcular.sumarXandY<br>
+Endif<br>
+tiempo = (Calcular.SteperXandY.Max / 1000) <br>
+&nbsp;For p = 0 To Calcular.SteperXandY.Max <br>
+Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = Calcular.SteperXandY[p]<br>
+Wait 0.001<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;'progrest = (p / 1000)<br>
+&nbsp;progres = progres + (1 / Calcular.SteperXandY.Max)<br>
+&nbsp; Next<br>
+&nbsp;&nbsp; progres = 0<br>
+&nbsp; ' progrest = 0<br>
+&nbsp;&nbsp; tiempo = 0<br>
+&nbsp;'MonitorizarCalc.ProgressBar1.Value =
+MonitorizarCalc.ProgressBar1.Value + (1 / ((MonitorizarCalc.pasos[0] /
+2) + 2))<br>
+End<br>
+<br>
+</div>
+<div>
+<h2 style="color: rgb(0, 0, 153);" class="title">CtrlManual.Class v1.1<br>
+</h2>
+<div style="text-align: left;"><br>
+<div style="text-align: center;"><span style="font-weight: bold;">(Clase
+del formulario control manual, sensores y manejo del eje Z, Driver)<br>
+<br>
+</span></div>
+Public endOrden As String<br>
+Public arriba As String<br>
+Public abajo As String<br>
+Public puerto As File<br>
+Public salida As Byte<br>
+Public PuertoEstado As File<br>
+Public Entrada As Byte<br>
+Const bit3 As Byte = 8<br>
+Const bit4 As Byte = 16<br>
+Const bit5 As Byte = 32<br>
+Const bit6 As Byte = 64<br>
+Const bit7 As Byte = 128<br>
+Public sennal As Boolean<br>
+Public sennal1 As Boolean<br>
+Public Stopp As Boolean<br>
+Public Stopp1 As Boolean<br>
+Public HASTA0X As Boolean<br>
+Public HASTA0Y As Boolean<br>
+<br>
+' <br>
+Public Sub Form_Open()<br>
+Label9.Text = Mysql.softwareandvercion<br>
+Me.center<br>
+Timer1.Enabled = True<br>
+&nbsp;puerto = Open "/dev/port" For Write<br>
+End<br>
+Public Sub up_Click()<br>
+&nbsp;Seek #puerto, &amp;H37A<br>
+&nbsp; Write #puerto, 201 As Byte<br>
+&nbsp; sennal1 = True<br>
+End<br>
+Public Sub down_Click()<br>
+&nbsp;Seek #puerto, &amp;H37A<br>
+&nbsp; Write #puerto, 202 As Byte<br>
+&nbsp;&nbsp; sennal = True<br>
+End<br>
+' <br>
+Public Sub Timer1_Timer()<br>
+puertoEstado = Open "/dev/port" For Read<br>
+Seek #puertoEstado, &amp;H379<br>
+Read #puertoEstado, Entrada<br>
+Close puertoEstado<br>
+If (Entrada And bit3) = bit3 Then<br>
+SA.Value = 0<br>
+A.Visible = False<br>
+PictureBox3.X = 176<br>
+Else<br>
+SA.Value = 1<br>
+A.Visible = True<br>
+PictureBox3.X = 48<br>
+<br>
+End If<br>
+If (Entrada And bit4) = bit4 Then<br>
+Chk1.Value = 0<br>
+Sdown.Visible = False<br>
+Else<br>
+Chk1.Value = 1<br>
+Sdown.Visible = True<br>
+<br>
+End If<br>
+If (Entrada And bit5) = bit5 Then<br>
+Chk2.Value = 1<br>
+Sup.Visible = True<br>
+Else<br>
+Chk2.Value = 0<br>
+Sup.Visible = False<br>
+End If<br>
+If (Entrada And bit6) = bit6 Then<br>
+SC.Value = 1<br>
+C.Visible = True<br>
+Else<br>
+SC.Value = 0<br>
+C.Visible = False<br>
+End If<br>
+<br>
+If (Entrada And bit7) = bit7 Then<br>
+SB.Value = 1<br>
+B.Visible = True<br>
+Else<br>
+SB.Value = 0<br>
+B.Visible = False<br>
+End If<br>
+If Sdown.Visible = False And Sup.Visible = False Then<br>
+&nbsp;center.Visible = True<br>
+&nbsp;Else<br>
+&nbsp;center.Visible = False <br>
+Endif<br>
+<br>
+If Sdown.Visible = True And sennal = True Then<br>
+&nbsp; stop_Click()<br>
+&nbsp; sennal = False<br>
+Endif<br>
+If Sup.Visible = True And sennal1 = True Then<br>
+&nbsp; stop_Click()<br>
+&nbsp; sennal1 = False<br>
+Endif<br>
+End<br>
+<br>
+<br>
+Public Sub stop_Click()<br>
+&nbsp;Seek #puerto, &amp;H37A<br>
+&nbsp; Write #puerto, 203 As Byte<br>
+&nbsp; Catch<br>
+End<br>
+<br>
+Public Sub Iniciar_Click()<br>
+&nbsp;Seek #puerto, &amp;H37A<br>
+&nbsp; Write #puerto, 203 As Byte<br>
+&nbsp; up_Click<br>
+&nbsp; offtodos_Click()<br>
+<br>
+Do While sb.Value = False Or SA.Value = False <br>
+&nbsp;'---------------------------------------------------------------------------&nbsp;
+<br>
+&nbsp; If sb.Value = False And SA.Value = True Then<br>
+&nbsp;Wait 0.002<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 96<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp; Wait 0.002<br>
+&nbsp; Stepper.offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 80<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp; Wait 0.002<br>
+&nbsp; Stepper.offcanal1()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 144<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;&nbsp; Wait 0.002<br>
+&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = 160<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+'***********************************************<br>
+&nbsp;'---------------------------------------------------------------------------<br>
+&nbsp;Else If sb.Value = True And SA.Value = False Then<br>
+&nbsp; Wait 0.002<br>
+&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+CtrlManual.salida = 10<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait 0.002<br>
+&nbsp; <br>
+&nbsp; Stepper.offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 9<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;<br>
+&nbsp; Wait 0.002<br>
+&nbsp; <br>
+&nbsp; Stepper.offcanal0()<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 5<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp; Wait 0.002<br>
+&nbsp; <br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 6<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+<br>
+&nbsp; Else<br>
+&nbsp;
+'---------------------------------------------------------------------------<br>
+&nbsp;Wait 0.002<br>
+&nbsp;&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 106<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;Wait 0.002<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 89<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;Wait 0.002<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 149<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+&nbsp;Wait 0.002<br>
+&nbsp;&nbsp; Seek #CtrlManual.puerto, &amp;H378<br>
+&nbsp;CtrlManual.salida = 166<br>
+&nbsp;Write #CtrlManual.puerto, CtrlManual.salida As Byte<br>
+<br>
+&nbsp;&nbsp; Endif<br>
+&nbsp;&nbsp; Loop<br>
+&nbsp;&nbsp; offtodos_Click()<br>
+End <br>
+&nbsp; <br>
+<br>
+Public Sub ontodos_Click()<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+&nbsp; Write #puerto, 255 As Byte<br>
+End<br>
+<br>
+Public Sub offtodos_Click()<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+&nbsp;Write #puerto, 0 As Byte<br>
+&nbsp;Catch<br>
+End<br>
+<br>
+Public Sub salir_Click()<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+&nbsp;Write #puerto, 0 As Byte<br>
+Close #puerto<br>
+Me.Close<br>
+End<br>
+<br>
+Public Sub d0_Click()<br>
+If d0.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 128<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 128)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+<br>
+End<br>
+<br>
+Public Sub d1_Click()<br>
+If d1.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 64<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 64)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+End<br>
+<br>
+Public Sub d2_Click()<br>
+If d2.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 32<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 32)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+End<br>
+<br>
+Public Sub d3_Click()<br>
+If d3.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 16<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 16)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+&nbsp; <br>
+<br>
+End<br>
+<br>
+Public Sub d4_Click()<br>
+If d4.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 8<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 8)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+<br>
+End<br>
+<br>
+Public Sub d5_Click()<br>
+If d5.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 4<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 4)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+End<br>
+<br>
+Public Sub d6_Click()<br>
+If d6.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 2<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 2)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+End<br>
+<br>
+Public Sub d7_Click()<br>
+If d7.Value = True Then <br>
+Seek #puerto, &amp;H378<br>
+salida = salida Or 1<br>
+&nbsp;Write #puerto, salida As Byte<br>
+&nbsp; Else<br>
+&nbsp;Seek #puerto, &amp;H378<br>
+salida = salida And (255 - 1)<br>
+&nbsp; Write #puerto, salida As Byte<br>
+Endif<br>
+End<br>
+<br>
+Public Sub Button1_Click()<br>
+If RadioButton1.Value = True Then<br>
+Stepper.derechax<br>
+Else <br>
+Stepper.izquierdax<br>
+End If<br>
+End<br>
+&nbsp;<br>
+Public Sub Button2_Click()<br>
+If RadioButton3.Value = True Then<br>
+Stepper.derechay<br>
+Else <br>
+Stepper.izquierday<br>
+End If<br>
+End<br>
+Public Sub Button5_Click()<br>
+If Stopp1 = True Then<br>
+&nbsp; Stopp1 = False<br>
+&nbsp; Else<br>
+&nbsp; Stopp1 = True<br>
+&nbsp;&nbsp;&nbsp; Endif<br>
+&nbsp; End<br>
+<br>
+Public Sub Cerrar_Click()<br>
+Me.Close<br>
+End<br>
+<br>
+Public Sub Minimizar_Click()<br>
+&nbsp;Me.Minimized = True<br>
+FMain.ShowDialog<br>
+End<br>
+</div>
+</div>
+<div>
+<h2 style="color: red;" class="title">Variable.Module v1.1</h2>
+<br>
+<div style="text-align: left;">
+<div style="text-align: center;"><span style="font-weight: bold;">(Modulo
+de las principales variables utilizadas en el Driver.)<br>
+<br>
+</span></div>
+Public TpMin As Integer<br>
+Public Px As Float<br>
+Public Py As Float<br>
+Public Xcm As Float<br>
+Public Ycm As Float<br>
+Public Tpx As Float<br>
+Public Tpy As Float<br>
+Public STpx As Float<br>
+Public STpy As Float<br>
+Public Spx As Float<br>
+Public Spy As Float<br>
+Public Gmx As Float<br>
+Public Gmy As Float<br>
+Public SFracX As Float<br>
+Public SFracY As Float<br>
+Public Errorr As Float<br>
+Public MError As New Float[]<br>
+Public MTpMin As New Integer[]<br>
+Public FX1 As New Float[]<br>
+Public FX2 As New Float[]<br>
+Public FY1 As New Float[]<br>
+Public FY2 As New Float[]<br>
+Public FX12 As New Float[]<br>
+Public FY12 As New Float[]<br>
+Public SENTIDOX As String<br>
+Public SENTIDOY As String<br>
+Public a As Integer<br>
+Public i As Integer<br>
+Public ii As Integer<br>
+<br>
+'Constantes<br>
+<br>
+Public cmv As Float<br>
+Public PG As Float<br>
+<br>
+Public Sub MULTIPLICAR()<br>
+Px = Xcm * cmv * PG<br>
+Py = Ycm * cmv * PG<br>
+Gmx = Px / PG<br>
+GmY = Py / PG<br>
+End<br>
+<br>
+Public Sub Asignar()<br>
+If px &gt; py Then<br>
+Tpx = TpMin<br>
+STpx = Tpx * Px<br>
+Try Tpy = STpx / Py<br>
+STpy = Int(Tpy) * Py<br>
+Else<br>
+Tpy = TpMin <br>
+STpy = Tpy * Py<br>
+Try Tpx = STpy / Px<br>
+STpx = Int(Tpx) * Px<br>
+<br>
+Endif<br>
+MTpMin.Add(TpMin)<br>
+MonitorizarCalc.GridView1[i, 0].Text = TpMin<br>
+i = i + 1<br>
+Catch<br>
+End<br>
+<br>
+Public Sub Sumatorias()<br>
+SFracY = Frac(Tpy) * Py<br>
+SFracX = Frac(Tpx) * Px<br>
+End<br>
+<br>
+Public Sub MargError()<br>
+If SFracX &lt;&gt; 0 Then<br>
+Errorr = ((SFracX / Tpx) / PG) / cmv<br>
+Else If SFracY &lt;&gt; 0 Then<br>
+Errorr = ((SFracY / TpY) / PG) / cmv<br>
+Endif<br>
+If Errorr = Null Then<br>
+Errorr = 0<br>
+Endif<br>
+MError.Add(Errorr)<br>
+MonitorizarCalc.GridView1[ii, 1].Text = Errorr<br>
+ii = ii + 1<br>
+Catch<br>
+End<br>
+<br>
+<br>
+Public Sub limpiar()<br>
+Px = 0<br>
+PY = 0<br>
+Tpx = 0<br>
+tpy = 0<br>
+STpy = 0<br>
+STpx = 0<br>
+SFracY = 0<br>
+SFracX = 0<br>
+&nbsp;Errorr = 0<br>
+&nbsp;Calcular.SteperXN.Clear<br>
+&nbsp;Calcular.SteperYN.Clear<br>
+&nbsp;Calcular.SteperXandY.Clear<br>
+End<br>
+Public Sub MargError2()<br>
+If SFracX &lt;&gt; 0 Then<br>
+Errorr = ((SFracX / Tpx) / PG) / cmv<br>
+Else If SFracY &lt;&gt; 0 Then<br>
+Errorr = ((SFracY / TpY) / PG) / cmv<br>
+Endif<br>
+End<br>
+Public Sub Asignar2()<br>
+If px = 0 Then<br>
+&nbsp; Tpx = 0<br>
+&nbsp; STpx = 0<br>
+&nbsp; Tpy = 2<br>
+&nbsp;STpy = Int(Tpy) * Py<br>
+&nbsp;Else If py = 0 Then<br>
+&nbsp;&nbsp; Tpy = 0<br>
+&nbsp;&nbsp; Tpx = 2<br>
+&nbsp;&nbsp; STpx = Int(Tpx) * Px<br>
+Else If px &gt; py Then<br>
+Tpx = TpMin<br>
+STpx = Tpx * Px<br>
+Tpy = STpx / Py<br>
+STpy = Int(Tpy) * Py<br>
+Else <br>
+Tpy = TpMin <br>
+STpy = Tpy * Py<br>
+Tpx = STpy / Px<br>
+STpx = Int(Tpx) * Px<br>
+Endif<br>
+End<br>
+</div>
+</div>
+<div>
+<h2 class="title"><span style="color: rgb(204, 0, 0);">Calcular.Module v.1.5</span><br>
+</h2><br>
+<div style="text-align: left;">
+<div style="text-align: center;"><span style="font-weight: bold;">(Modulo que se encarga en generar los arrelglos para los motores X e Y, Driver)</span><br>
+</div>
+<br>
+Public Ey As Integer<br>
+Public Ex As Integer<br>
+''''''''''''''''''''''''<br>
+Public Ax As Byte<br>
+Public Bx As Byte<br>
+Public Cx As Byte<br>
+Public Dx As Byte<br>
+''''''''''''''''''''''''<br>
+Public Ay As Byte<br>
+Public By As Byte<br>
+Public Cy As Byte<br>
+Public Dy As Byte<br>
+Public SteperXN As New Byte[]<br>
+Public SteperYN As New Byte[]<br>
+Public SteperXandY As New Byte[]<br>
+<br>
+<br>
+Public Sub autocalculo()<br>
+&nbsp;&nbsp; Dim i As Integer<br>
+<br>
+Dim menor As Float<br>
+Variables.limpiar<br>
+menor = 10000000<br>
+Variables.i = 0<br>
+Variables.ii = 0<br>
+Try MonitorizarCalc.GridView1.Clear<br>
+For i = 2 To 10 Step 1<br>
+&nbsp;Variables.TpMin = i<br>
+Variables.limpiar<br>
+Variables.PG = 200<br>
+<br>
+'MULTIPLICAR<br>
+Variables.MULTIPLICAR<br>
+Variables.Asignar<br>
+Variables.Sumatorias<br>
+Variables.MargError<br>
+Next<br>
+<br>
+For i = 0 To Variables.MError.Max Step 1<br>
+&nbsp; If menor &gt; Variables.MError[i] Then<br>
+&nbsp;menor = Variables.MError[i]<br>
+&nbsp;Variables.TpMin = Variables.MTpMin[i]<br>
+Variables.limpiar<br>
+Variables.PG = 200<br>
+'MULTIPLICAR<br>
+Variables.MULTIPLICAR<br>
+Variables.Asignar2<br>
+Variables.Sumatorias<br>
+Variables.MargError2<br>
+&nbsp;Endif<br>
+Next<br>
+<br>
+Variables.MError.Clear<br>
+Variables.MTpMin.Clear&nbsp;&nbsp;&nbsp; <br>
+End<br>
+<br>
+Public Sub ASIGNARXANDY()<br>
+If CtrlManual.Chk2.Value = True Or CtrlManual.Chk1.Value = False Then<br>
+Ex = 2<br>
+Ey = 2<br>
+Variables.Tpx = 2<br>
+Variables.Tpy = 2<br>
+Else<br>
+Ex = Variables.Tpx<br>
+Ey = Variables.Tpy&nbsp; <br>
+Endif<br>
+<br>
+End<br>
+<br>
+Public Sub ProcessInX()<br>
+Dim i As Integer<br>
+Dim e As Integer<br>
+If Variables.SENTIDOX = "A" Then<br>
+Ax = 10<br>
+Bx = 9<br>
+Cx = 5<br>
+Dx = 6<br>
+&nbsp;Else If Variables.SENTIDOX = "D" Then<br>
+Ax = 6<br>
+Bx = 5<br>
+Cx = 9<br>
+Dx = 10<br>
+Endif<br>
+<br>
+If Variables.Px = 0 Then<br>
+Variables.Px = Variables.Py<br>
+Ex = Variables.Tpy<br>
+Ax = 0<br>
+Bx = 0<br>
+Cx = 0<br>
+Dx = 0<br>
+Endif<br>
+<br>
+For e = 1 To (Variables.Px / 4)<br>
+&nbsp; <br>
+For i = 1 To Ex <br>
+&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperXN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperXN.Add(Ax)<br>
+&nbsp; Endif<br>
+Next<br>
+For i = 1 To Ex <br>
+&nbsp;&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperXN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperXN.Add(Bx)<br>
+&nbsp; Endif<br>
+Next<br>
+For i = 1 To Ex <br>
+&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperXN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperXN.Add(Cx)<br>
+&nbsp; Endif<br>
+Next<br>
+For i = 1 To Ex <br>
+&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperXN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperXN.Add(Dx)<br>
+&nbsp; Endif<br>
+Next<br>
+Next<br>
+End<br>
+<br>
+<br>
+Public Sub ProcessInY()<br>
+&nbsp; Dim i As Integer<br>
+&nbsp; Dim e As Integer<br>
+If Variables.SENTIDOY = "C" Then<br>
+Ay = 160<br>
+By = 144<br>
+Cy = 80<br>
+Dy = 96<br>
+Else If Variables.SENTIDOY = "B" Then<br>
+Ay = 96<br>
+By = 80<br>
+Cy = 144<br>
+Dy = 160<br>
+Endif<br>
+<br>
+If Variables.Py = 0 Then<br>
+Variables.Py = Variables.Px<br>
+Ey = Variables.Tpx<br>
+Ay = 0<br>
+By = 0<br>
+Cy = 0<br>
+Dy = 0<br>
+Endif<br>
+<br>
+For e = 1 To (Variables.Py / 4)<br>
+&nbsp;<br>
+For i = 1 To Ey <br>
+&nbsp;&nbsp;&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperYN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperYN.Add(Ay)<br>
+&nbsp; Endif<br>
+Next<br>
+<br>
+For i = 1 To Ey <br>
+&nbsp;&nbsp;&nbsp;&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperYN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperYN.Add(By)<br>
+&nbsp; Endif<br>
+Next<br>
+For i = 1 To Ey <br>
+&nbsp;&nbsp;&nbsp;&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperYN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperYN.Add(Cy)<br>
+&nbsp; Endif<br>
+Next<br>
+For i = 1 To Ey<br>
+&nbsp;&nbsp;&nbsp;&nbsp; If i &gt; 15 Then <br>
+&nbsp;&nbsp; SteperYN.Add(0)<br>
+&nbsp; Else<br>
+&nbsp; SteperYN.Add(Dy)<br>
+&nbsp; Endif<br>
+Next<br>
+&nbsp;<br>
+Next<br>
+<br>
+End<br>
+<br>
+Public Sub sumarXandY()<br>
+Dim I As Integer<br>
+Dim determint As Integer<br>
+If SteperXN.Count = SteperYN.Count Then<br>
+&nbsp; determint = SteperXN.Count<br>
+Endif<br>
+If SteperXN.Count &lt; SteperYN.Count Then<br>
+&nbsp;determint = SteperXN.Count<br>
+&nbsp;Else<br>
+&nbsp;determint = SteperYN.Count<br>
+Endif<br>
+<br>
+For I = 0 To determint - 1<br>
+SteperXandY.Add(SteperXN[I] + SteperYN[I])<br>
+Next<br>
+<br>
+End<br>
+Public Sub sumarXHY()<br>
+Dim I As Integer<br>
+Dim determint As Integer<br>
+<br>
+If SteperXN.Count = SteperYN.Count Then<br>
+&nbsp; determint = SteperXN.Count<br>
+Endif<br>
+If SteperYN.Count &lt; SteperXN.Count Then<br>
+&nbsp;determint = SteperXN.Count<br>
+&nbsp;For I = 0 To determint - 1 <br>
+SteperXandY.Add(SteperXN[I])<br>
+Next<br>
+For I = 0 To SteperYN.Count - 2 <br>
+SteperXandY[I] = (SteperXandY[I] + SteperYN[I])<br>
+Next<br>
+&nbsp;'----------------------------------------------------------<br>
+&nbsp;Else&nbsp; <br>
+&nbsp;determint = SteperYN.Count - 1<br>
+&nbsp;For I = 0 To determint - 1<br>
+SteperXandY.Add(SteperYN[I])<br>
+Next<br>
+For I = 0 To SteperXN.Count - 2<br>
+SteperXandY[I] = (SteperXandY[I] + SteperXN[I])<br>
+Next<br>
+Endif<br>
+End<br>
+Public Sub CNCBEGIN()<br>
+Dim G As Boolean<br>
+Dim i As Integer<br>
+Dim tempp As Float<br>
+Dim back As Integer<br>
+CtrlManual.Iniciar_Click()<br>
+Variables.FX1.Clear<br>
+Variables.FX2.Clear<br>
+Variables.FY1.Clear<br>
+Variables.FY2.Clear<br>
+Variables.FY12.Clear<br>
+Variables.FY12.Clear<br>
+back = -15<br>
+MonitorizarCalc.cargar_Click()<br>
+<br>
+For i = 0 To Variables.FX2.Count - 1<br>
+If Variables.FX2[i] = 0 And Variables.FY2[i] = 0 Then <br>
+back = back + 1<br>
+Endif<br>
+<br>
+Next<br>
+<br>
+&nbsp;CtrlManual.up_Click()<br>
+Wait 1<br>
+Variables.FX12.Add(Variables.FX1[0])<br>
+Variables.Xcm = (Variables.FX1[0])<br>
+Variables.SENTIDOX = "D"<br>
+&nbsp;Variables.SENTIDOY = "C"<br>
+&nbsp;Variables.Ycm = 0<br>
+Stepper.XHY<br>
+<br>
+&nbsp;Variables.FY12.Add(Variables.FY1[0])<br>
+<br>
+&nbsp;Variables.SENTIDOY = "C"<br>
+&nbsp;Variables.Ycm = (Variables.FY12[0])<br>
+&nbsp;Variables.Xcm = 0<br>
+Variables.SENTIDOX = "D"<br>
+<br>
+Stepper.XHY<br>
+<br>
+&nbsp;CtrlManual.down_Click()<br>
+<br>
+&nbsp; Wait 2<br>
+<br>
+For i = 0 To Variables.FX2.Count - back<br>
+CtrlManual.offtodos_Click()<br>
+<br>
+If Variables.FX2[i] = 0 And Variables.FY2[i] = 0 Then <br>
+<br>
+G = True<br>
+CtrlManual.up_Click()<br>
+&nbsp; Wait 1<br>
+<br>
+Variables.a = 1<br>
+i = i + 1<br>
+Else<br>
+G = False<br>
+Variables.a = 0<br>
+Endif<br>
+<br>
+''----------------------------------------------------------------------------------------<br>
+<br>
+tempp = ((Variables.FX2[i]) - (Variables.FX1[i - Variables.a]))<br>
+If tempp &lt; 0 Then<br>
+<br>
+Variables.SENTIDOX = "A"<br>
+Else<br>
+<br>
+Variables.SENTIDOX = "D"<br>
+Endif<br>
+Variables.Xcm = Abs(Tempp)<br>
+Variables.FY12.Add(Abs(Tempp))<br>
+<br>
+'----------------------------------------------------------------------------------------<br>
+Tempp = (Variables.FY2[i] - Variables.FY1[i - Variables.a])<br>
+If tempp &lt; 0 Then<br>
+&nbsp;Variables.SENTIDOY = "B"<br>
+&nbsp;Else <br>
+&nbsp;Tempp = (Variables.FY1[i - Variables.a] - Variables.FY2[i])<br>
+&nbsp; Variables.SENTIDOY = "C"<br>
+&nbsp;Endif<br>
+&nbsp; Variables.Ycm = Abs(Tempp)<br>
+&nbsp; Variables.FY12.Add(Abs(Tempp))<br>
+<br>
+'----------------------------------------------------------------------------------------<br>
+Stepper.XHY<br>
+If G = True Then<br>
+&nbsp;CtrlManual.down_Click()<br>
+<br>
+&nbsp; Wait 3<br>
+Variables.a = 0<br>
+G = False<br>
+Endif<br>
+Next<br>
+CtrlManual.offtodos_Click()<br>
+Catch<br>
+CtrlManual.up_Click()<br>
+<br>
+End<br>
+<br>
+Public Sub monitorV()<br>
+MonitorizarCalc.Xcm.Text = Variables.Xcm<br>
+MonitorizarCalc.Ycm.Text = Variables.Ycm<br>
+MonitorizarCalc.TEX.Text = Variables.SENTIDOX<br>
+MonitorizarCalc.TEY.Text = Variables.SENTIDOY<br>
+MonitorizarCalc.TpMin.Text = Variables.TpMin<br>
+MonitorizarCalc.Tpx.Text = Variables.Tpx<br>
+MonitorizarCalc.Tpy.Text = Variables.Tpy<br>
+MonitorizarCalc.Px.Text = Variables.Px<br>
+MonitorizarCalc.Py.Text = Variables.Py<br>
+MonitorizarCalc.SfracX.Text = Variables.SFracX<br>
+MonitorizarCalc.SfracY.Text = Variables.SFracY<br>
+MonitorizarCalc.STpx.Text = Variables.STpx<br>
+MonitorizarCalc.STpy.Text = Variables.stpy<br>
+MonitorizarCalc.GMx.Text = Variables.Gmx<br>
+MonitorizarCalc.GMy.Text = Variables.Gmy<br>
+MonitorizarCalc.Error.Text = Variables.Errorr&nbsp; <br>
+<br>
+End<br>
+</div>
+</div>
+<div>
+<h2 class="title"><span style="color: rgb(0, 0, 153);">MonitorizarCalc.Class v.1.7</span><br>
+</h2><br>
+<div style="text-align: left;">
+<div style="text-align: center;"><span style="font-weight: bold;">&nbsp;(Clase
+del formulario donde de puede monitorizar el proceso de corte,y&nbsp;
+se realiza las lectura de las coordenadas del proyecto a graficar,
+Driver )<br>
+<br>
+</span></div>
+Public selecttx As Result<br>
+Public selectty As Result <br>
+Public pasos As Result<br>
+Public pasosz As Result<br>
+Public ii As Integer<br>
+Public s As Integer<br>
+Public d As Integer<br>
+Public ProyectoName As String<br>
+<br>
+Public Sub Calcular_Click()<br>
+Variables.limpiar<br>
+Variables.Xcm = Xcm.Text<br>
+Variables.Ycm = Ycm.Text<br>
+Variables.TpMin = TpMin.Text<br>
+Variables.PG = 200<br>
+'MULTIPLICAR<br>
+Variables.MULTIPLICAR<br>
+Variables.Asignar<br>
+Variables.Sumatorias<br>
+Variables.MargError<br>
+'LLAMAR<br>
+Px.Text = Variables.Px<br>
+Py.Text = Variables.Py<br>
+Tpx.Text = Variables.Tpx<br>
+Tpy.Text = Variables.Tpy<br>
+GMx.Text = Variables.Gmx<br>
+GMy.Text = Variables.Gmy<br>
+SfracX.Text = Variables.SFracX<br>
+SfracY.Text = Variables.SFracY<br>
+STpx.Text = Variables.STpx<br>
+STpy.Text = Variables.STpy<br>
+Error.Text = Variables.Errorr<br>
+End<br>
+<br>
+Public Sub calcularAuto_Click()<br>
+<br>
+Dim i As Integer<br>
+Dim menor As Float<br>
+Variables.limpiar<br>
+menor = 10000000<br>
+Variables.i = 0<br>
+Variables.ii = 0<br>
+GridView1.Clear<br>
+Variables.SENTIDOX = TEX.Text<br>
+Variables.SENTIDOY = TEY.Text<br>
+For i = 2 To 10<br>
+&nbsp;Variables.TpMin = i<br>
+Variables.limpiar<br>
+Variables.Xcm = Xcm.Text<br>
+Variables.Ycm = Ycm.Text<br>
+Variables.PG = 200<br>
+<br>
+<br>
+'MULTIPLICAR<br>
+Variables.MULTIPLICAR<br>
+Variables.Asignar<br>
+Variables.Sumatorias<br>
+Variables.MargError<br>
+'LLAMAR<br>
+Px.Text = Variables.Px<br>
+Py.Text = Variables.Py<br>
+Tpx.Text = Variables.Tpx<br>
+Tpy.Text = Variables.Tpy<br>
+GMx.Text = Variables.Gmx<br>
+GMy.Text = Variables.Gmy<br>
+SfracX.Text = Variables.SFracX<br>
+SfracY.Text = Variables.SFracY<br>
+STpx.Text = Variables.STpx<br>
+STpy.Text = Variables.STpy<br>
+Error.Text = Variables.Errorr<br>
+Next<br>
+<br>
+For i = 0 To Variables.MError.Max Step 1<br>
+&nbsp; If menor &gt; Variables.MError[i] Then<br>
+&nbsp;menor = Variables.MError[i]<br>
+&nbsp;Variables.TpMin = Variables.MTpMin[i]<br>
+TpMin.Text = Variables.MTpMin[i]<br>
+Variables.limpiar<br>
+Variables.Xcm = Xcm.Text<br>
+Variables.Ycm = Ycm.Text<br>
+Variables.PG = 200<br>
+'MULTIPLICAR<br>
+Variables.MULTIPLICAR<br>
+Variables.Asignar2<br>
+Variables.Sumatorias<br>
+Variables.MargError2<br>
+'LLAMAR<br>
+Px.Text = Variables.Px<br>
+Py.Text = Variables.Py<br>
+Tpx.Text = Variables.Tpx<br>
+Tpy.Text = Variables.Tpy<br>
+GMx.Text = Variables.Gmx<br>
+GMy.Text = Variables.Gmy<br>
+SfracX.Text = Variables.SFracX<br>
+SfracY.Text = Variables.SFracY<br>
+STpx.Text = Variables.STpx<br>
+STpy.Text = Variables.STpy<br>
+Error.Text = Variables.Errorr<br>
+&nbsp;Endif<br>
+Next<br>
+Variables.MError.Clear<br>
+Variables.MTpMin.Clear<br>
+<br>
+End<br>
+<br>
+<br>
+Public Sub Button1_Click()<br>
+&nbsp; Me.Close<br>
+End<br>
+<br>
+<br>
+<br>
+Public Sub Button2_Click()<br>
+Me.Minimized = True<br>
+End<br>
+<br>
+<br>
+Public Sub Button4_Click()<br>
+&nbsp;MatrisXY.Show <br>
+End<br>
+<br>
+<br>
+Public Sub Form_Open()<br>
+Label22.Text = Mysql.softwareandvercion<br>
+CtrlManual.puerto = Open "/dev/port" For Write<br>
+CtrlManual.Timer1_Timer()<br>
+Variables.cmv = 7<br>
+' s = 2<br>
+' d = 10<br>
+GridView1.Columns.Count = 2<br>
+GridView1.Rows.Count = 9<br>
+GridView1.Columns.Width = GridView1.Width / 2<br>
+<br>
+GridView2.Columns.Count = 5<br>
+GridView2.Rows.Count = 500<br>
+GridView2.Columns.Width = GridView2.Width / 5<br>
+&nbsp;MonitorizarCalc.Nombres.text = Mysql.Proyectonombre<br>
+Mysql.CONECTAR_BD<br>
+Catch<br>
+End<br>
+<br>
+Public Sub cargar_Click()<br>
+Dim i As Integer<br>
+s = 2<br>
+d = 10<br>
+ProyectoName = Mysql.Proyectonombre<br>
+If ProyectoName = "" Then<br>
+&nbsp;ProyectoName = MonitorizarCalc.Nombres.text<br>
+Endif<br>
+selecttx = Mysql.Conexion.Exec("select x from Graficos where nombre ='" &amp; ProyectoName &amp; "' ")<br>
+selectty = Mysql.Conexion.Exec("select y from Graficos where nombre ='" &amp; ProyectoName &amp; "' ")<br>
+pasos = Mysql.Conexion.Exec("select COUNT(*)from Graficos where nombre ='" &amp; ProyectoName &amp; "'")<br>
+<br>
+'-------------------------------------------------------------------------------------<br>
+<br>
+For i = 0 To selecttx.Count - 1 Step 1<br>
+<br>
+If selecttx[0] = 0 Then<br>
+<br>
+&nbsp;Variables.FX1.Add(0)<br>
+Else<br>
+&nbsp;Variables.FX1.Add(((selecttx[0] / s) / d))<br>
+&nbsp;Endif<br>
+&nbsp;<br>
+<br>
+If selectty[0] = 0 Then<br>
+&nbsp;Variables.FY1.Add(0)<br>
+Else<br>
+&nbsp;Variables.FY1.Add(((selectty[0] / s) / d))<br>
+&nbsp;Endif<br>
+<br>
+'-------------------------------------------------------------------------------------<br>
+&nbsp; <br>
+&nbsp;selecttx.MoveNext<br>
+<br>
+If selecttx[0] = 0 Then<br>
+&nbsp;Variables.FX2.Add(0)<br>
+Else<br>
+&nbsp;Variables.FX2.Add(((selecttx[0] / s) / d))<br>
+Endif<br>
+<br>
+selectty.MoveNext<br>
+<br>
+If selectty[0] = 0 <br>
+&nbsp;Variables.FY2.Add(0)<br>
+Else<br>
+&nbsp;Variables.FY2.Add(((selectty[0] / s) / d))<br>
+Endif<br>
+Next<br>
+Catch<br>
+End<br>
+<br>
+'-------------------------------------------------------------------------------------<br>
+<br>
+Public Sub Button5_Click()<br>
+Dim G As Boolean<br>
+Dim i As Integer<br>
+Dim tempp As Float<br>
+Dim back As Integer<br>
+Dim t As Integer<br>
+GridView2.Clear<br>
+GridView2[0, 0].Text = "Hata 0"<br>
+GridView2[0, 1].Text = "A"<br>
+GridView2[0, 2].Text = "Hasta 0"<br>
+GridView2[0, 3].Text = "B"<br>
+GridView2[0, 4].Text = "UP"<br>
+&nbsp;CtrlManual.Iniciar_Click()<br>
+Variables.FX1.Clear<br>
+Variables.FX2.Clear<br>
+Variables.FY1.Clear<br>
+Variables.FY2.Clear<br>
+Variables.FY12.Clear<br>
+Variables.FY12.Clear<br>
+back = -15<br>
+cargar_Click()<br>
+For i = 0 To Variables.FX2.Count - 1<br>
+If Variables.FX2[i] = 0 And Variables.FY2[i] = 0 Then <br>
+back = back + 1<br>
+Endif<br>
+Next<br>
+&nbsp;CtrlManual.up_Click()<br>
+&nbsp;<br>
+Wait 1<br>
+GridView2[1, 0].Foreground = Color.Green<br>
+GridView2[1, 1].Foreground = Color.Green<br>
+GridView2[1, 4].Foreground = Color.Green<br>
+GridView2[1, 2].Foreground = Color.Green<br>
+GridView2[1, 3].Foreground = Color.Green<br>
+<br>
+GridView2[1, 0].Text = Variables.FX1[0]<br>
+GridView2[1, 1].Text = "D"<br>
+GridView2[1, 4].Text = "----"<br>
+GridView2[1, 2].Text = "----"<br>
+GridView2[1, 3].Text = "----"<br>
+<br>
+Variables.FX12.Add(Variables.FX1[0])<br>
+Variables.Xcm = (Variables.FX1[0])<br>
+Variables.SENTIDOX = "D"<br>
+&nbsp;Variables.SENTIDOY = "C"<br>
+&nbsp;Variables.Ycm = 0<br>
+<br>
+<br>
+Stepper.XHY<br>
+<br>
+<br>
+Variables.FY12.Add(Variables.FY1[0])<br>
+GridView2[2, 1].Text = "----"<br>
+GridView2[2, 2].Text = Variables.FY1[0]<br>
+GridView2[2, 3].Text = "C"<br>
+GridView2[2, 4].Text = "----"<br>
+GridView2[2, 0].Text = "----"<br>
+GridView2[2, 4].Text = "----"<br>
+GridView2[2, 0].Foreground = Color.Green<br>
+GridView2[2, 1].Foreground = Color.Green<br>
+GridView2[2, 4].Foreground = Color.Green<br>
+GridView2[2, 2].Foreground = Color.Green<br>
+GridView2[2, 3].Foreground = Color.Green<br>
+<br>
+&nbsp;Variables.SENTIDOY = "C"<br>
+&nbsp;Variables.Ycm = (Variables.FY12[0])<br>
+&nbsp;Variables.Xcm = 0<br>
+Variables.SENTIDOX = "D"<br>
+<br>
+Stepper.XHY <br>
+<br>
+CtrlManual.down_Click()<br>
+&nbsp;GridView2[3, 0].Text = "----"<br>
+GridView2[3, 1].Text = "----"<br>
+GridView2[3, 2].Text = "----"<br>
+GridView2[3, 3].Text = "----"<br>
+GridView2[3, 4].Text = "DOWN"<br>
+<br>
+<br>
+&nbsp; Wait 2<br>
+For i = 0 To Variables.FX2.Count - back<br>
+CtrlManual.offtodos_Click()<br>
+<br>
+<br>
+If Variables.FX2[i] = 0 And Variables.FY2[i] = 0 Then <br>
+<br>
+G = True<br>
+CtrlManual.up_Click()<br>
+<br>
+&nbsp; Wait 1<br>
+Variables.a = 1<br>
+If GridView2[I + 4 + t, 0].Text &lt;&gt; "" Then<br>
+t = t + 1<br>
+GridView2[I + 4 + t, 0].Text = "----"<br>
+GridView2[I + 4 + t, 1].Text = "----"<br>
+GridView2[I + 4 + t, 2].Text = "----"<br>
+GridView2[I + 4 + t, 3].Text = "----"<br>
+GridView2[I + 4 + t, 4].Text = "UP"<br>
+t = t - 1<br>
+Else<br>
+GridView2[I + 4 + t, 0].Text = "----"<br>
+GridView2[I + 4 + t, 1].Text = "----"<br>
+GridView2[I + 4 + t, 2].Text = "----"<br>
+GridView2[I + 4 + t, 3].Text = "----"<br>
+GridView2[I + 4 + t, 4].Text = "UP"&nbsp; <br>
+Endif<br>
+&nbsp;<br>
+i = i + 1<br>
+<br>
+Else<br>
+G = False<br>
+Variables.a = 0<br>
+Endif<br>
+'/////////////////////////////////<br>
+<br>
+'-------------------------------------------------------------------------------------<br>
+<br>
+tempp = ((Variables.FX2[i]) - (Variables.FX1[i - Variables.a]))<br>
+If tempp &lt; 0 Then<br>
+<br>
+Variables.SENTIDOX = "A"<br>
+GridView2[I + 4 + t, 1].Text = "A"<br>
+' TEX.Text = "A"<br>
+Else<br>
+<br>
+Variables.SENTIDOX = "D"<br>
+GridView2[I + 4 + t, 1].Text = "D"<br>
+' TEX.Text = "D"<br>
+Endif<br>
+Variables.Xcm = Abs(Tempp)<br>
+Variables.FY12.Add(Abs(Tempp))<br>
+' Xcm.Text = Abs(Tempp)<br>
+&nbsp;GridView2[I + 4 + t, 0].Text = Abs(Tempp)<br>
+&nbsp;&nbsp; GridView2[I + 4 + t, 4].Text = "----"<br>
+<br>
+'-------------------------------------------------------------------------------------<br>
+<br>
+Tempp = (Variables.FY2[i] - Variables.FY1[i - Variables.a])<br>
+If tempp &lt; 0 Then<br>
+&nbsp;Variables.SENTIDOY = "B"<br>
+&nbsp;GridView2[I + 4 + t, 3].Text = "B"<br>
+' TEY.Text = "B"<br>
+&nbsp;Else <br>
+&nbsp;Tempp = (Variables.FY1[i - Variables.a] - Variables.FY2[i])<br>
+&nbsp;<br>
+&nbsp; Variables.SENTIDOY = "C"<br>
+&nbsp; GridView2[I + 4 + t, 3].Text = "C"<br>
+'&nbsp;&nbsp; TEY.Text = "C"<br>
+&nbsp;Endif<br>
+&nbsp; Variables.Ycm = Abs(Tempp)<br>
+&nbsp; Variables.FY12.Add(Abs(Tempp))<br>
+<br>
+'&nbsp; Ycm.Text = Abs(Tempp)<br>
+If GridView2[I + 3 + t, 4].Text = "UP" Then<br>
+GridView2[I + 4 + t, 0].Foreground = Color.Green<br>
+GridView2[I + 4 + t, 1].Foreground = Color.Green<br>
+GridView2[I + 4 + t, 2].Foreground = Color.Green<br>
+GridView2[I + 4 + t, 3].Foreground = Color.Green<br>
+GridView2[I + 4 + t, 4].Foreground = Color.Green<br>
+&nbsp; <br>
+Endif<br>
+<br>
+&nbsp; GridView2[I + 4 + t, 2].Text = Abs(Tempp)<br>
+<br>
+&nbsp; GridView2[I + 4 + t, 4].Text = "----"<br>
+&nbsp; <br>
+'-------------------------------------------------------------------------------------<br>
+<br>
+Stepper.XHY<br>
+If G = True Then<br>
+&nbsp;CtrlManual.down_Click()<br>
+t = t + 1<br>
+GridView2[I + 4 + t, 0].Text = "----"<br>
+GridView2[I + 4 + t, 1].Text = "----"<br>
+GridView2[I + 4 + t, 2].Text = "----"<br>
+GridView2[I + 4 + t, 3].Text = "----"<br>
+GridView2[I + 4 + t, 4].Text = "DOWN"<br>
+<br>
+<br>
+&nbsp; Wait 3<br>
+Variables.a = 0<br>
+G = False<br>
+Endif<br>
+<br>
+Next<br>
+CtrlManual.offtodos_Click()<br>
+Catch<br>
+CtrlManual.up_Click()<br>
+GridView2[I + 4 + t, 0].Text = "----"<br>
+GridView2[I + 4 + t, 1].Text = "----"<br>
+GridView2[I + 4 + t, 2].Text = "----"<br>
+GridView2[I + 4 + t, 3].Text = "----"<br>
+GridView2[I + 4 + t, 4].Text = "UP"<br>
+GridView2[I + 4 + t, 0].Foreground = Color.red<br>
+GridView2[I + 4 + t, 1].Foreground = Color.red<br>
+GridView2[I + 4 + t, 2].Foreground = Color.red<br>
+GridView2[I + 4 + t, 3].Foreground = Color.red<br>
+GridView2[I + 4 + t, 4].Foreground = Color.red<br>
+<br>
+End<br>
+<br>
+<br>
+Public Sub Timer1_Timer()<br>
+Dim segundos As String<br>
+Dim Minutos As String<br>
+segundos = Format$((Stepper.tiempo) - (Stepper.progrest), "00.#")<br>
+Minutos = Format$((Stepper.tiempo / 60) - (Stepper.progrest / 60), "00.##")<br>
+&nbsp; ProgressBar2.Value = Stepper.progres<br>
+&nbsp; If ((Stepper.tiempo) - (Stepper.progrest)) &lt; 60 Then<br>
+&nbsp;&nbsp;&nbsp; Label9.Text = ((segundos) &amp; " Seg")<br>
+&nbsp;&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp; Label9.Text = ((Minutos) &amp; " Min")<br>
+&nbsp; Endif<br>
+End<br>
+<br>
+Public Sub Button3_Click()<br>
+&nbsp; MatrisXY.Show<br>
+End<br>
+<br>
+Public Sub Cerrar_Click()<br>
+Dim respuesta As Integer<br>
+&nbsp; respuesta = Message.Question("¿Deseas Cerrar la Ventana Actual?", "Cerrar", "Cancelar")<br>
+&nbsp; If respuesta = 1 Then<br>
+Me.Close<br>
+&nbsp; Endif<br>
+End<br>
+<br>
+Public Sub Minimizar_Click()<br>
+&nbsp;Me.Minimized = True<br>
+&nbsp;FMain.ShowDialog<br>
+End<br>
+</div>
+</div>
+</div>
+<footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+<script src="./js/jquery.liquid-slider.min.js"></script>
+<script>
+/**
+* If you need to access the internal property or methods, use this:
+* var api = $.data( $('#main-slider')[0], 'liquidSlider');
+* console.log(api);
+*/
+$('#main-slider').liquidSlider();
+</script></footer><br>
+</div>
+<center>.</center>
+<div style="text-align: center;"><a href="#" onclick="subir();return false" title="Ir Arriba"><img style="position: fixed; bottom: 0pt; right: 0pt;" src="icon_top.png" border="0"> </a>
+
+
+
+<br>
+<br>
+
+</div>
+<div id="footer">
+2013 - 2014 © Autor : Denis German Gimenez<br>
+<br>
+<p id="credits">CADCNC V: 1.0<br>
+<br>
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+</body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  
+  <script language="javascript" type="text/javascript">
+
+var arriba;
+function subir() {
+if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
+window.scrollBy(0, -15);
+arriba = setTimeout('subir()', 10);
+}
+else clearTimeout(arriba);
+}
+  </script>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>CADCNC V 1.0</title>
+
+  
+  
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head><body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+<div id="wrap">
+<div style="height: 883px;" id="header">
+<div id="topnav">
+<ul>
+  <li style="color: rgb(0, 204, 204);" class="current"><a href="index.html" title="Introducción">Introducción</a></li>
+  <li style="color: rgb(0, 204, 204); background-color: rgb(0, 204, 204);"><a href="Graficacion.html" title="Software de Graficacion">Software de
+Graficacion</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Driver.html" title="Software Driver">Software Driver</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Electronica.html" title="Electrónica">Electrónica </a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Mecanica.html" title="Mecánica">Mecánica</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Codigo.html" title="Código">Código</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Gfotos.html" title="Fotos">Fotos</a></li>
+  <li style="background-color: rgb(0, 204, 204); color: rgb(0, 204, 204);"><a href="mas.html" title="Más">+</a></li>
+</ul>
+</div>
+<h1 style="height: 61px; text-align: center; width: 957px; font-family: Ubuntu;" id="sitename"><img style="width: 933px; height: 130px;" alt="x" src="print%20pantalla/Captura%20de%20pantalla%20de%202014-07-26%2021:40:25.png" /><br />
+</h1>
+<h1 style="height: 61px; text-align: center; width: 957px; font-family: Ubuntu;" id="sitename"><br />
+</h1>
+<h1 style="height: 61px; text-align: center; font-family: Ubuntu; margin-left: 69px; width: 833px;" id="sitename"><small>PROTOTIPO DE SOFTWARE DE DISEÑO, SOFTWARE
+CONTROLADOR Y ROUTER CNC PARA CORTE DE POLIETILENO.</small></h1>
+<big><br />
+</big><br />
+<div style="text-align: center; height: 326px;"><small><small><small><img style="width: 500px; height: 320px;" alt="x" src="print%20pantalla/ABRIR%20PROYECTO.png" /><br />
+<big style="color: white;"><big><big><big><big><br />
+NOMBRE DEL SISTEMA PROTOTICO : CNCAD V-1.0<br />
+<br />
+AUTOR : DENIS GERMAN GIMENEZ.<br />
+<br />
+<br />
+<br />
+</big></big></big></big></big></small></small></small></div>
+<small><small><small><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</small></small></small>
+</div>
+<div id="content">
+
+<div id="left">
+
+<div class="container">
+
+<div class="post">
+
+<div style="margin-left: 29px; width: 910px;" class="postcontent">
+<div style="text-align: center;"><big style="font-weight: bold;"><big>INTRODUCCION<br />
+<br />
+</big></big></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+La elección de desarrollo de este trabajo se inicio como una
+oportunidad de aprendizaje, Esto surgió a principios del año 2013 en
+descontinuo desarrollo por diversos motivos ,y finalizado a mediados
+del año 2014. La fuente que movilizo el desarrollo de este trabajo, fue
+en gran parte la oportunidad de adquirir conocimientos y experiencias
+en procesos mecanizados y programados por computador, de una forma
+independiente a software y hardware ya realizados por terceros .<br />
+Este proyecto brinda una perspectiva mucho mas elemental y básica que
+las complejas maquinas y software CNC industriales.<br />
+<br />
+Como finalidad del proyecto, lo que se pretende , es que todo el
+material, documentación y experiencia obtenida al llevar acabo el
+proyecto, sirva de herramienta base, para estudiantes y personas que
+quieran comprender o incursionar en los procesos de maquinas CNC. Mucho
+de lo que se brindara en este proyecto podrá apoyar o servir a nuevas
+ideas, de fines distinto o no , también podrán realizar sistemas CNC
+mas elaborados y complejos partiendo de este proyecto prototipo, como
+una base .<br />
+<br />
+Cabe destacar que el sistema se realizo en un lenguaje de programación
+llamado GAMBAS ( Gambas Almost Means Basic), es un lenguaje de
+programación libre derivado de BASIC. <br />
+<br />
+Funciona bajo plataforma GNU/LINUX y recientemente en sistemas Mac.<br />
+El sistema completo se puede dividir en 3 partes fundamentales para su
+mejor comprensión<br />
+SOFTWARE :<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SOFTWARE DE GRAFICACION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SOFTWARE CNC<br />
+CIRCUITOS ELECTRONICOS:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+INTERFAZ DE CONEXION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CIRCUITO MONITOR <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CIRCUITO DE PROTECION .<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CIRCUITOS H .<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SENSORES.<br />
+SISTEMA MECANICO:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+“EJE X”, “EJE Y” &amp; “EJE Z ”<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOTOR PAP BIPOLAR<br />
+</div>
+</div>
+<div class="post">
+<div style="margin-left: 28px; width: 911px;" class="postcontent"><big style="font-weight: bold;">¿Que es CNC ?</big><br />
+<br />
+El control numérico o control decimal numérico (CN) es un sistema de
+automatización de máquinas herramienta que son operadas mediante
+comandos programados en un medio de almacenamiento, en comparación con
+el mando manual mediante volantes o palancas. Las primeras máquinas de
+control numérico se construyeron en los años 1940 y 1950, basadas en las<br />
+máquinas existentes con motores modificados cuyos mandos se accionaban
+automáticamente siguiendo las instrucciones dadas en un sistema de
+tarjeta perforada. Estos servomecanismos iniciales se desarrollaron
+rápidamente con equipos analógicos y digitales. El abaratamiento y
+miniaturización de los microprocesadores ha generalizado la electrónica
+digital en las máquinas<br />
+herramienta, lo que dio lugar a la denominación control decimal
+numérico, control numérico por computadora , control numérico por
+computador o control numérico computarizado (CNC), para diferenciarlas
+de las máquinas que no tenían computadora. En la actualidad se usa el
+término control numérico para referirse a este tipo de sistemas, con o
+sin computadora.<br />
+Este sistema ha revolucionado la industria debido al abaratamiento de
+microprocesadores y a la simplificación de la programación de las
+máquinas de CNC.<br />
+<br />
+<big style="font-weight: bold;">Principio de funcionamiento</big><br />
+<br />
+Para mecanizar una pieza se usa un sistema de coordenadas que
+especificarán el movimiento de la herramienta de corte.<br />
+El sistema se basa en el control de los movimientos de la herramienta
+de trabajo con relación a los ejes de coordenadas de la máquina, usando
+un programa informático ejecutado por un ordenador. <br />
+<br />
+<big style="font-weight: bold;">Router CNC</big><br />
+<br />
+El objetivo o función del Router CNC es poder recortar piezas de
+polietileno expandido (telgopor) previamentes graficadas en el software
+. En este caso, hace falta controlar los movimientos de la herramienta
+en tres ejes de coordenadas: El eje X que es de base, con
+desplazamiento horizontal, sobre este se desplaza el eje Y con
+movimiento longitudinal y final-mente el eje Z con dos posicionamientos
+verticales sobre el eje Y.<br />
+<br />
+<hr style="width: 100%; height: 2px;" />
+<div style="text-align: center;">Coordenadas<br />
+<br />
+<div style="text-align: left; font-weight: bold;">Ejes 'X',' Y' y ' Z'.<br />
+</div>
+<img style="width: 417px; height: 397px;" alt="x" src="intro/coo.gif" /><br />
+<div style="text-align: left;">Tanto en el software como en el router
+opte por usar el cuadrante con vectores positivos, y como punto central
+0 en los tres ejes . <br />
+</div>
+<div style="text-align: left; margin-top: 10px; width: 911px; height: 1599px;">Por
+lo tanto, como resultado los movimientos de cota, alejamiento, y
+distancia son positivos . El eje "X" tiene un largo total de
+desplazamiento de 55 cm, y el eje "Y" de 34 cm, mientras que el eje Z
+se puede posicionar en dos puntos cardinales verticales que le permita
+hacer contacto con la pieza de telgopor, o alejarse de la misma,
+permitiendo la posibilidad de ubicarse en otro punto del eje Y o X ,
+sin alterar indebidamente la pieza a cortar.<br />
+<br />
+<img style="width: 384px; height: 333px;" alt="x" src="intro/coo2.jpg" /><br />
+<br />
+<br />
+<hr style="width: 100%; height: 2px;" /><br />
+<div style="text-align: center;"><img style="width: 759px; height: 1066px;" alt="x" src="intro/estructura.png" /><br />
+<br />
+<br />
+</div>
+<div style="text-align: center;">
+<span style="font-weight: bold;"><br />
+<br />
+<br />
+ENTORNO DE DESAROLLO.</span><br />
+<div style="text-align: left; height: 224px;"><br />
+<span style="font-weight: bold;">¿ Porque el sistema se desarrolla bajo
+el entorno GNU/LINUX ?<br />
+<br />
+</span>Porque el conocimiento tiene que ser libre y gratuito a todo
+aquel que quiera adquirirlo, ningún software desarrollado bajo un
+sistema operativo privativo es 100 % transparente, por mas que sea de
+código abierto el software desarrollado en el .<br />
+No se trata de facilidad, ni de rapidez , las desventajas pueden ser
+mayores o menores , pero no se trata de eso ,y ni tampoco de tener que
+saberlo todo , si no de la libertad de saber lo que uno quiera<br />
+aprender ... <br />
+Si bien el software puede funcionar y ser desarrollo en cual
+distribución de GNU/LINUX<br />
+Se utiliza Fedora o Ubuntu por preferencia.<br />
+<br />
+Ver en <a target="_blank" href="mas.html">anexos</a> Fedora, Ubuntu.<br />
+<br />
+<span style="font-weight: bold;">El software se desarrolla con el
+lenguaje de programación Gambas .<br />
+<br />
+</span>GAMBAS está basado en componentes, por lo cual tiene muchas
+posibilidades que son interesantes.<br />
+se pueden diseñar interfaces gráficas con QT4 o GTK+, acceder a MySQL,
+PostgresSQL, ODBC y<br />
+SQLite, aplicaciones con D-bus, traducir su programa a cualquier
+lenguaje, crear aplicaciones de red<br />
+fácilmente, hacer aplicaciones 3D en OpenGL, hacer aplicaciones web
+CGI, etc.<br />
+GAMBAS es un lenguaje con objetos, construido a partir de un intérprete
+de BASIC y se libera bajo la<br />
+licencia pública general de GNU.<br />
+.<br />
+Ver mas sobre "Gambas" en <a href="mas.html" target="_blank">anexos</a> .<br />
+<br />
+<br />
+</div>
+</div>
+<br />
+<br />
+<br />
+<div style="text-align: center;"><a href="#" onclick="subir();return false" title="Ir Arriba"><img style="position: fixed; bottom: 0pt; right: 0pt;" src="icon_top.png" border="0" /> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clear">
+</div>
+<div style="margin-top: 476px; height: 124px;" id="footer"><br />
+2013 - 2014 © Autor : Denis German Gimenez<br />
+<br />
+<p id="credits">CADCNC V: 1.0<br />
+<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+
+var arriba;
+function subir() {
+if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
+window.scrollBy(0, -15);
+arriba = setTimeout('subir()', 10);
+}
+else clearTimeout(arriba);
+}
+</script>
+
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>CADCNC V 1.0</title>
+  
+  <link href="style.css" rel="stylesheet" type="text/css" /></head><body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+<div id="wrap">
+<div id="header">
+<div id="topnav">
+<ul>
+  <li style="color: rgb(0, 204, 204);"><a href="index.html" title="Introducción">Introducción</a></li>
+  <li style="color: rgb(0, 204, 204); background-color: rgb(0, 204, 204);" class="current"><a href="Graficacion.html" title="Software de Graficacion">Software
+de Graficacion</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Driver.html" title="Software Driver">Software Driver</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Electronica.html" title="Electrónica">Electrónica </a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Mecanica.html" title="Mecánica">Mecánica</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Codigo.html" title="Código">Código</a></li>
+     <li style="color: rgb(0, 204, 204);"><a href="Gfotos.html" title="Fotos">Fotos</a></li>
+  <li style="background-color: rgb(0, 204, 204); color: rgb(0, 204, 204);"><a href="mas.html" title="Más">+</a></li>
+</ul>
+</div>
+<div id="introtext">
+
+<table style="text-align: left; width: 960px; margin-left: auto; margin-right: auto; height: 143px;" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td style="vertical-align: bottom; height: 142px; text-align: center; width: 220px;"><img style="width: 190px; height: 122px;" alt="c" src="print%20pantalla/ABRIR%20PROYECTO.png" hspace="0" vspace="2" /><br />
+      </td>
+      <td style="vertical-align: top; height: 142px; width: 734px;">
+      <div style="text-align: center;">
+      </div>
+<h1 style="text-align: center;" id="sitename"><big>Software de Graficacion</big></h1>
+      <big> </big></td>
+    </tr>
+  </tbody>
+</table>
+<h1 style="height: 61px;" id="sitename"><br />
+</h1>
+<br />
+</div>
+</div>
+<div id="content">
+<div style="text-align: center;">
+</div>
+<div id="left">
+<div style="text-align: center;">
+</div>
+<div class="container">
+<div style="text-align: center;">
+</div>
+<div class="post">
+<div style="text-align: center;">
+</div>
+<div style="margin-left: 29px; width: 910px;" class="postcontent">
+<div style="text-align: center;">
+</div>
+<div style="text-align: center; font-weight: bold;"><big>Estilo de Interfaz Gnome.<br />
+<br />
+</big></div>
+La
+interfaz gráfica fue diseñada para funcionar perfectamente con el
+entorno de escritorio clásico de Gnome 3 . si bien funciona bajo KDE Y
+XFCE se percibe cierta lentitud en KDE y no mantiene el correcto estilo
+sobre este y XFCE- por lo cual se recomienda usar el software bajo
+Distribuciones que corran con Gnome 3 , o modificar la interfaz gráfica
+del software, par que funcione correctamente bajo el entorno en cual se
+desee ejecutarlo .<br />
+<div style="text-align: left;">
+Ver en <a href="mas.html" target="_blank">anexos</a> entorno de escritorio (Gnome/ KDE/ XFCE)<span style="font-weight: bold;">.</span></div>
+
+</div>
+</div>
+<div class="post">
+<div style="text-align: center;">
+</div>
+<div style="margin-left: 29px; width: 910px;" class="postcontent">
+<div style="text-align: center;">
+</div>
+<div style="text-align: center;"><big style="font-weight: bold;">El
+software de graficacion .</big><br />
+<br />
+</div>
+
+El
+software utiliza una base de datos MySql. Su uso se aplica para
+almacenar las coordenadas de los proyecto , nombre de proyecto ,
+usuario, contraseña entre otros datos que se describirán mas adelante .
+Para poder ejecutar el software se requiere :<br />
+GNU/Linux (Sistema Operativo)<br />
+Interfaz gráficas, preferentemente Gnome 3<br />
+gambas-rumtime 3 juntos a las siguientes librerías<br />
+gb.db &gt; Este componente le permite acceder a varios sistemas
+gestores de bases de datos.<br />
+gb.db.form&gt; Este componente contiene controles enlazados a datos
+(data-bound controls).<br />
+gb.db.mysql&gt; Controlador de base de datos Mysql.<br />
+gb.form&gt; Este componente provee un conjunto de controles mejorados.
+Estos pueden ser usados indiferentemente con gb.qt o gb.gtk.<br />
+gb.gui &gt;Este componente deberá cargar el componente gb.qt o el
+gb.gtk, de acuerdo al escritorio que se este usando. Si estas usando
+KDE, entonces gb.qt deberá se cargado.<br />
+En cualquier otro caso, gb.gtk deberá ser cargado <br />
+Mysql server v 5.7 .instalado junto a la base de datos del proyecto .<br />
+<br />
+El software por el momento utiliza 6 Módulos y 8 clases entre ambos
+suman mas 3300 lineas de código aprox. , y sumando a esto 8 formularios
+de interfaz gráfica.<br />
+En este apartado se describirán los siguientes elementos :<br />
+<br />
+I. Diagrama de su estructura .<br />
+II. Base de datos.<br />
+III. Diagramas de flujos de sus componentes principales .<br />
+IV. Impresiones de pantalla del software y descripción de sus elementos .<br />
+V. Control de acceso para el usuario y control de cuentas de usuario.<br />
+VI. Seleccionar proyecto o crear nuevo.<br />
+VII. Ventana de Principal o ventana de graficacion.<br />
+VIII. Descripciones elementales de funcionamiento.<br />
+
+<p><span class="readmore"><br />
+</span></p>
+<p style="text-align: center;"><span class="readmore"><img src="Diagramas/Estructura%20sosftware.jpg" style="border: 0px solid ; width: 556px; height: 535px;" alt="x" title="x" /></span><br />
+</p>
+<p>➢ Para iniciar el software de graficacion se solicita una cuenta
+de usuario , este es necesario para poder relacionar los gráficos con
+autor propietario.<br />
+➢ Una vez ingresado se puede optar para seleccionar un proyecto ya
+creado desde la Base de datos o de un archivo , o en su defecto crear
+uno nuevo que se guardara automáticamente en la base de datos .<br />
+➢ Una vez después de haber abierto el achico . Se ingresa a la ventana
+de graficacion en esta se podrá crear / editar el diseño de la figura
+que se desee cortar en la plancha de telgopor-</p>
+<br />
+<big><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<small style="font-weight: bold;">Tablas de la base de datos</small></big></big>
+<p>
+</p>
+<div style="text-align: center;"><img style="width: 617px; height: 216px;" alt="x" src="IMAGENES/bd.png" /><br />
+<br />
+<div style="text-align: center;"><br />
+<div style="text-align: left;"><small style="font-weight: bold;">&nbsp;</small><big style="font-weight: bold;">Control de acceso para el usuario</big><small style="font-weight: bold;">.</small><br />
+</div>
+
+<br />
+<div style="text-align: left;">
+Ingreso : Para ingresara por primera vez se utiliza una cuenta de
+usuario . Por defecto es :<br />
+</div>
+<div style="text-align: left;">
+usuario ROOT, contraseña : ROOT.<br />
+</div>
+<br />
+<span style="font-weight: bold;">Ingrese
+su nombre de Usuario:</span><br />
+<br />
+<img style="width: 631px; height: 174px;" alt="x" title="x" src="print%20pantalla/Captura%20de%20pantalla%20de%202014-07-13%2022_45_13.png" /><br />
+<br />
+<span style="font-weight: bold;">Luego ingrese su Contraseña:</span><br />
+<br />
+<img style="width: 634px; height: 179px;" alt="x" src="print%20pantalla/Captura%20de%20pantalla%20de%202014-07-13%2022_45_40.png" /><br />
+<br />
+<big><big><br /><small><span style="font-weight: bold;">
+Diagrama ingreso de usuario</span><br style="font-weight: bold;" />
+<span style="font-weight: bold;">
+Ingreso de Usuario</span></small></big></big><br />
+<img style="width: 557px; height: 736px;" alt="x" src="Diagramas/mot9.gif.jpg" /><br />
+<big><big><br />
+</big></big>
+<hr style="width: 100%; height: 2px;" /><big style="font-weight: bold;"><br />
+Abrir Proyecto existente</big><small style="font-weight: bold;"> </small><br />
+<br />
+<div style="text-align: left;">
+En este se puede seleccionar un proyecto de la base de datos , o
+seleccionar uno de un archivo de extensión (.Cnc)<br />
+</div>
+
+<br style="text-decoration: underline;" />
+<span style="font-weight: bold; text-decoration: underline;">Formulario abrir proyecto:</span><br />
+<br />
+<img style="width: 693px; height: 399px;" alt="X" src="print%20pantalla/ABRIR.png" /><br />
+<div style="text-align: center; margin-top: 28px; height: 0px; margin-left: 603px; width: 308px;"><img style="width: 250px; height: 198px;" alt="X" src="print%20pantalla/Captura%20de%20pantalla%20de%202014-07-13%2022_46_55.png" /><br />
+(Figura 4. )</div>
+<div style="text-align: left; width: 555px;">La lista que se muestra en
+la imagen es una lista con los proyecto creados por el usuario<br />
+que ingreso y todos los proyectos declarados públicos que puedan
+pertenecer a otro<br />
+usuario.<br />
+Al seleccionar de la lista se muestra nuevamente el nombre , fecha de
+creación , fecha de<br />
+la ultima modificación .<br />
+Botón “Abrir “ Una vez seleccionado el proyecto, clic en abrir.<br />
+Si desea abrir un proyecto creado en un archivo “Abrir archivo ”&nbsp; <br />
+busque el archivo en la ventana de dialogo .<br />
+(Figura 4. )<br />
+Botón “Nuevo” cierra el formulario actual para abrir<br />
+el formulario Crear proyecto nuevo.<br />
+<br />
+</div>
+<br />
+<br />
+<big style="font-weight: bold;">Crear un nuevo Proyecto </big><small style="font-weight: bold;"><br />
+</small>
+<br />
+<div style="text-align: left;">Al ingresar en esta opción , el usuario
+puede crear un nuevo proyecto
+.Ingresando un nombre para este , si se desea que el proyecto que pueda
+ser visto y modificado por otros “Usuarios” cheque en la opción publico
+.Haciendo clic en el botón “nuevo” se inicia un proceso que
+automáticamente guardara en la base de datos nombre del usuario , fecha
+de creación y nombre del proyecto, siguiendo de esta acción se abrirá
+la interfaz principal, (interfaz de graficacion ). Las opciones “Abrir
+proyecto existente ” permite volver a la interfaz anterior . <br />
+El botón “Borrar” permite eliminar un proyecto que se encuentre en la
+base de datos.<br />
+</div>
+
+<br />
+<span style="font-weight: bold;">Formulario “Nuevo proyecto ”.</span><br />
+<br />
+<img style="width: 695px; height: 399px;" alt="X" src="print%20pantalla/nuevo%20proyecto.png" /><br />
+</div>
+<br />
+<hr style="width: 100%; height: 2px;" /><br />
+<br />
+<big>Diagrama de flujos de los procesos anteriores. </big><br />
+<br />
+<br />
+<img style="width: 727px; height: 882px;" alt="x" src="Diagramas/abrir%20proyecto.jpg" /><br />
+<br />
+<br />
+<img style="width: 611px; height: 800px;" alt="x" src="Diagramas/abrir%20proyecto%20desde%20archivo.jpg" /><br />
+<br />
+<br />
+<img style="width: 775px; height: 792px;" alt="x" src="Diagramas/Proyecto%20nuevo.jpg" /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</div>
+<p><span class="readmore" /></p>
+</div>
+</div>
+<div class="post">
+
+<div style="margin-left: 28px; width: 911px;" class="postcontent">
+<div style="text-align: center;"><big><big><big><small style="font-weight: bold;">Interfaz de Graficacion</small><br />
+</big></big></big></div>
+<div style="text-align: center;"><br />
+<img style="width: 910px; height: 664px;" alt="x" src="print%20pantalla/Captura%20de%20pantalla%20de%202014-07-14%2001-13-29.png" /><br />
+</div>
+<br />
+Es la ventana principal, en esta se realiza el diseño o gráfico . Se
+ofrece un pequeño conjunto de herramientas en el panel izquierdo . Que
+se puede ocultar con el botón “expandir ”, esto sirve para ver la
+ventana de graficacion completa si se cuenta con un monitor de
+resolución menor de 1280 px de ancho, permitiendo poder graficar
+libremente en monitores de resolución mínima (1024 x 768 px ). por el
+momento la interfaz de graficacion se encuentra con funciones muy
+básicas , pero estables.<br />
+<br />
+<img style="width: 911px; height: 323px;" alt="x" src="print%20pantalla/Captura%20de%20pantalla%20de%202014-07-26%2018:23:41.png" /><br />
+<br />
+<big style="font-weight: bold;">Principio de funcionamiento.</big><br />
+<br />
+<div style="text-align: left;">El dibujo se realiza en el recuadro
+negro con cuadriculas verdes , este objeto pertenece a la clase gb.gui
+y define con el nombre de DrawingArea ,es de exactamente 1100 x 640
+píxeles, para establecer el área de trabajo relativo de se divide el
+alto tanto como el ancho por 2, y a esto se divide nuevamente por 10. o
+simplemente ancho y alto divido 20 .<br />
+Una cuadricula de 20x20 px es igual a 1 x 1 cm en el router Cnc. Por lo
+tanto las cuadriculas representa 1cm cuadrado. 32 cm de alto (sobre el
+eje “Y ”) y 55 cm de ancho (sobre el eje “X”) .<br />
+Para dibujar puntos, se establece la coordenada de un punto Ejemplo
+punto “A” = (A: “x”,”y”) .<br />
+Internamente el software separa los puntos estableciendo en la
+coordenadas el valor “x “ = 0 “y “= 0 por lo tanto este espacio de
+graficacion queda reservado para establecer una separación de puntos o
+el fin de una linea par el comienzo de otra. <br />
+<br />
+Esto se puede hacer de 3 forma , uno con la ayuda del mouse o con la
+ayuda de la regla y finalmente ingresando las coordenadas manualmente
+del punto. <br />
+Para dibujar una linea se establecen dos puntos fijadas en el sistema
+de coordenadas : uno de (A : “x”,”y”) y (B : “x”,”y”) .<br />
+Al igual que el punto se puede realizar de las 3 formas mencionadas ,
+pero en este caso el siguiente punto es el punto de conexión “B” .<br />
+A continuación se muestra una imagen de lo que vendría a ser el cuadro
+de herramientas de graficacion . Con la descripción de cada opción.
+Tener en cuenta que es de un software prototipo por lo tanto las
+funciones son limitadas .<br />
+<br />
+&nbsp;<br />
+<div style="text-align: center;"><img style="width: 655px; height: 947px;" alt="x" src="print%20pantalla/panel%20de%20herramientas.png" /><br />
+</div>
+<br />
+<hr style="width: 100%; height: 2px;" /><br />
+<div style="text-align: center;"><big><big><span style="font-weight: bold;">Dibujar</span> <br />
+<br />
+</big></big>
+</div>
+A continuación de esta breve introducción se presentaran dos diagramas
+de flujo detallados, el primero es el proceso para graficar, en el cual
+se leen las coordenadas “X” e “Y” para luego ser representas con puntos
+y lineas . Para lograr guiar al usuario donde comienza y termina una
+figura se utiliza el color amarillo para el “punto” de comienzo, el
+punto verde para el final ,y el “punto” de color rojo para identificar
+el ultimo punto de todas las figura .También para identificar mas
+fácilmente las lineas que componen la imagen a graficar los punto de
+unión son de color Cían y de menor tamaño que los puntos comienzo y
+final.<br />
+Entienda-ce por figura la separación de un punto con respecto a otro
+sin tener lineas que las unan de forma directo o indirectamente.
+(figura 6)<br />
+<br />
+<div style="text-align: center;"><img style="width: 491px; height: 599px;" alt="x" src="print%20pantalla/figura.jpg" /><br />
+Figura- 6<br />
+<br />
+</div>
+El segundo es uno de los principales procesos para generar las
+coordenadas En este método/proceso se ingresan las coordenadas
+partiendo de las coordenadas del mouse sobre el cuadro de graficacion ,
+la coordenada es adquirida y evaluada con el evento del mouse ( “
+mouse_up”).<br />
+<br />
+Variables utilizadas para la graficacion de los puntos . El color de
+las lineas en todos los casos son de color blanco y de ancho 2 píxeles
+por lo tanto solo se menciona las variables de los puntos .<br />
+<br />
+<p style="margin-bottom: 0cm; font-style: normal; font-weight: normal;"><font face="Ubuntu"><span style="background: transparent none repeat scroll 0% 50%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><img style="width: 557px; height: 98px;" alt="x" src="print%20pantalla/variables%20del%20punto.jpg" /><br />
+</span></font></p>
+<br />
+</div>
+<br />
+<div style="text-align: center;"><img style="width: 734px; height: 951px;" alt="x" src="Diagramas/Graficacion.jpg" /><br />
+</div>
+<br />
+<div style="text-align: center;"><img style="width: 752px; height: 1040px;" alt="x" src="Diagramas/Dibujar%20con%20el%20mouse.jpg" /><br />
+</div>
+<div style="text-align: center;"><a href="#" onclick="subir();return false" title="Ir Arriba"><img style="position: fixed; bottom: 0pt; right: 0pt;" src="icon_top.png" border="0" /> </a>
+
+<br />
+</div>
+</div>
+</div>
+<div class="clear">
+</div>
+<div id="footer">
+2013 - 2014 © Autor : Denis German Gimenez<br />
+<br />
+
+<p id="credits">CADCNC V: 1.0<br />
+<br />
+</p>
+</div>
+</div>
+</div>
+
+</div></div></body></html>

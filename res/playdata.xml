@@ -1,0 +1,70 @@
+<playData>
+<viewItem type="template" tempType="temp3D" stratTime="0" duration="-1">
+<dataInfo id="0" size="107051" url="res/hemicycle_out.swf" />
+</viewItem>
+<!-- images data area start here ... -->
+<viewItem type="image" stratTime="4" duration="4">
+<dataInfo id="1" size="103587" url="slides/1.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="8" duration="4">
+<dataInfo id="2" size="118044" url="slides/2.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="12" duration="4">
+<dataInfo id="3" size="54541" url="slides/3.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="16" duration="4">
+<dataInfo id="4" size="87309" url="slides/4.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="20" duration="4">
+<dataInfo id="5" size="82185" url="slides/5.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="24" duration="4">
+<dataInfo id="6" size="56219" url="slides/6.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="28" duration="4">
+<dataInfo id="7" size="82732" url="slides/7.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="32" duration="4">
+<dataInfo id="8" size="56999" url="slides/8.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="9" size="126817" url="slides/9.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="10" size="126817" url="slides/10.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="28" duration="4">
+<dataInfo id="11" size="82732" url="slides/11.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="32" duration="4">
+<dataInfo id="12" size="56999" url="slides/12.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="13" size="126817" url="slides/13.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="14" size="126817" url="slides/14.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="15" size="126817" url="slides/15.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="16" size="126817" url="slides/16.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="17" size="126817" url="slides/17.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="18" size="126817" url="slides/18.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="19" size="126817" url="slides/19.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="20" size="126817" url="slides/20.JPG" />
+</viewItem>
+<viewItem type="image" stratTime="36" duration="4">
+<dataInfo id="21" size="126817" url="slides/21.JPG" />
+</viewItem>
+<!-- images data area end -->
+</playData>

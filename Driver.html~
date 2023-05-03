@@ -1,0 +1,741 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  
+  <script language="javascript" type="text/javascript">
+
+var arriba;
+function subir() {
+if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
+window.scrollBy(0, -15);
+arriba = setTimeout('subir()', 10);
+}
+else clearTimeout(arriba);
+}
+  </script>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>CADCNC V 1.0</title>
+
+  
+  
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head><body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+<div id="wrap">
+<div id="header">
+<div id="topnav">
+<ul>
+  <li style="color: rgb(0, 204, 204);"><a href="index.html" title="Introducción">Introducción</a></li>
+  <li style="color: rgb(0, 204, 204); background-color: rgb(0, 204, 204);"><a href="Graficacion.html" title="Software de Graficacion">Software
+de Graficacion</a></li>
+  <li style="color: rgb(0, 204, 204);" ;="" class="current"><a href="Driver.html" title="Software Driver">Software Driver</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Electronica.html" title="Electrónica">Electrónica </a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Mecanica.html" title="Mecánica">Mecánica</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Codigo.html" title="Código">Código</a></li>
+  <li style="color: rgb(0, 204, 204);"><a href="Gfotos.html" title="Fotos">Fotos</a></li>
+  <li style="background-color: rgb(0, 204, 204); color: rgb(0, 204, 204);"><a href="mas.html" title="Más">+</a></li>
+</ul>
+</div>
+<div id="introtext">
+<table style="text-align: left; width: 960px; margin-left: auto; margin-right: auto; height: 142px;" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td style="vertical-align: bottom; height: 142px; text-align: center; width: 220px;"><img style="width: 190px; height: 122px;" alt="c" src="print%20pantalla/ABRIR%20PROYECTO.png" hspace="0" vspace="2" /><br />
+      </td>
+      <td style="vertical-align: top; height: 142px; width: 734px;">
+      <div style="text-align: center;"> </div>
+      <h1 style="text-align: center;" id="sitename"><big>Software
+controlador del Router CNC (Driver)<br />
+      </big></h1>
+      <br />
+      <big> </big></td>
+    </tr>
+  </tbody>
+</table>
+<h1 style="height: 61px;" id="sitename"><br />
+</h1>
+<br />
+</div>
+</div>
+<div id="content">
+<div id="left">
+<div class="container">
+<div class="post">
+<div style="margin-left: 29px; width: 910px;">
+<div style="text-align: center;"><span style="font-weight: bold;">Controlando
+al Router CNC </span><br style="font-weight: bold;" />
+<br />
+</div>
+En este apartado se guiara a lector paso a paso en los procesos del
+software driver, con el fin de que al finalizar la lectura comprenda el
+funcionamiento del mismo. El driver hace una lectura de las coordenadas
+“X e Y ”de un proyecto seleccionado de la base de datos , estas
+coordenadas al ser procesadas se obtiene como resultado final
+secuencias binarias que serán las que excitaran indirectamente los
+bobinados de los motores de los ejes “X ”e “Y”.<br />
+<br />
+Antes de comenzar para lograr el correcto entendimiento del sistema
+controlador<br />
+hay que tener claro principalmente los siguientes temas .<br />
+<br />
+&gt; Motores Paso a paso:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Principios de funcionamiento de Motores Paso a paso bipolares<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Métodos de secuencias para la activación de sus bobinas .<br />
+&gt; Puerto Paralelo :<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Principios de funcionamiento .<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bus de datos .<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bus de control.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bus de estado .<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Métodos de escritura y lectura del puerto .<br />
+&gt; Principio de funcionamiento del driver.<br />
+<br />
+<table style="text-align: left; width: 898px; height: 26px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;Los
+conceptos sobre el funcionamiento del puerto paralelo y motores P-P
+bipolares son en mas simplificados, y resumidos,&nbsp;&nbsp; para mas
+información
+ver en anexos.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<hr style="width: 100%; height: 2px;" /><br />
+<big style="font-weight: bold;">MOTORES PASO A PASO<br />
+<br />
+</big>Motores paso a paso (step motor)<br />
+El motor paso a paso (step motor) está concebido para el
+posicionamiento con precisión y de forma discreta, con incrementos
+angulares de su eje, denominados pasos. Éstos se producen en la
+inversión de la corriente por los devanados, que a su vez es controlada
+por unos interruptores de estado sólido de potencia. A éstos llega una
+señal discreta proveniente del circuito digital de control, el cual
+determina la acción del motor. Existe una gran variedad de motores paso
+a paso, diferenciados entre si por su constitución y forma de
+construcción. Entre éstos destacan tres tipos:<br />
+<br />
+Motores de imán permanente.<br />
+Motores de reluctancia variable.<br />
+Motores híbridos.<br />
+<br />
+<table style="text-align: left; width: 898px; height: 26px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Estos 2 Primeros no serán
+descriptos en este apartado , pero si en la sección de anexos.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<big><span style="font-weight: bold;">Motores paso a paso híbridos</span></big><br />
+<br />
+Los motores híbridos paso a paso operan combinando los principios de
+los motores de imán permanente y los de reluctancia variable,
+intentando obtener las características que destacan en cada uno de
+ellos. Combinados se obtienen unos ángulos de paso pequeños y alto par
+con un tamaño pequeño.<br />
+<br />
+<div style="text-align: center;"><img style="width: 639px; height: 295px;" alt="x" src="driver/1.jpg" /><br />
+</div>
+<br />
+Las características y forma del estator es prácticamente igual a la de
+los otros modelos de motores paso a paso de imán permanente y
+reluctancia variable. Las diferencias de importancia se encuentran en
+la estructura del rotor, formado por un disco cilíndrico imantado en
+posición longitudinal al eje. éste está altamente magnetizado
+produciendo un flujo unipolar .<br />
+<br />
+El motor híbrido produce un par por fuerza de reluctancia, igual que el
+motor de reluctancia variable. La diferencia entre ambos es que el tipo
+de excitación utilizado. En el motor de reluctancia variable, la
+excitación es producida únicamente por medio del<br />
+bobinado, mientras que en el motor híbrido la excitación es conjunta
+entre el bobinado y el imán.<br />
+<br />
+<big style="font-weight: bold;">Motores paso a paso bipolares y
+unipolares<br />
+<br />
+</big>
+<table style="text-align: left; width: 899px; height: 26px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">En los ejes X e Y se utilizan
+motores paso a paso híbridos bipolar estos son mas complejos para
+controlar que los motores P-P unipolares pero son superiores en par de
+torsión.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<big style="font-weight: bold;"><br />
+</big>El motor más ampliamente extendido y utilizado el la mayoría de
+las aplicaciones es el motor híbrido de dos fases. Éste se puede
+encontrar con diferentes combinaciones en los bobinados de excitación,
+para diferentes tipos de alimentación.<br />
+<br />
+-Motor bipolar: tiene dos bobinados, correspondiendo cada uno de ellos
+a una fase. Dispone de cuatro hilos, dos para cada bobinado. El control
+se realiza forzosamente de forma bipolar, normalmente mediante un
+puente.<br />
+<br />
+-Motor unipolar: el bobinado por cada fase es doble, unido en el
+interior y puesto en serie nos entrega 6 hilos, agrupados de tres en
+tres para cada fase (uno de estos es el punto común). El control es
+unipolar, aunque se puede realizar un control bipolar serie dejando el
+hilo central al aire, no esta diseñado con esta finalidad.<br />
+<br />
+-Motor de 8 hilos: se trata de un motor con doble bobinado como el
+motor unipolar, pero con todos los terminales accesibles desde el
+exterior. Esto permite realizar múltiples combinaciones de excitación,
+como motor unipolar uniéndolos de tres en tres en oposición de campo y
+como motor bipolar con los bobinados en serie o en paralelo.<br />
+<br />
+Relación entre el par y la excitación bipolar y unipolar<br />
+<br />
+<big><small>El par de un motor paso a paso es proporcional a la
+intensidad del campo magnético generado por los devanados del estator.
+Solo puede aumentarse si se añaden mas espiras en el bobinado o se
+aumenta la corriente por cada fase. El límite en el aumento de la
+corriente es el peligro que supone llegar a saturar el núcleo, aunque
+esto tiene una importancia mínima. Lo que resulta mas grave es el
+aumento de la temperatura del motor debido a las perdidas en los
+bobinados. Esto pone al motor unipolar en una clara<br />
+desventaja sobre el bipolar, ya que este tiene una resistencia el doble
+que el otro, debido a<br />
+que la sección del hilo es aproximadamente la mitad por las
+limitaciones físicas de la cavidad del estator que alberga los
+bobinados.</small><br />
+</big><big style="font-weight: bold;"><br />
+</big>
+<div style="text-align: center;"><big style="font-weight: bold;"><img style="width: 531px; height: 354px;" alt="x" src="driver/2.jpg" /></big><br />
+<br />
+<div style="text-align: left;"><big><span style="font-weight: bold;">Secuencias
+de excitación</span></big><br />
+<br />
+El control de un motor paso a paso se consigue alimentando las
+diferentes fases con una corriente. Dependiendo del nivel de la
+intensidad, de la polaridad y del orden de excitación secuencial
+obtenemos diferentes respuestas en el motor. A estas diferentes formas
+de alimentar el motor se les denomina (secuencias de alimentación o de
+excitación).<br />
+<br />
+En este apartado se hará referencia básicamente a la excitación de los
+motores híbridos, que son los que estamos utilizando para los Ejes .
+Hay que tener en cuenta que el control de los motores de reluctancia
+variable difiere de los motores híbridos y los de imán permanente en
+que sólo tenemos un sentido de la corriente para excitar el bobinado.<br />
+<br />
+<table style="text-align: left; width: 898px; height: 26px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Para hacer funcionar el motor se
+pueden usar tres tipos de secuencias de los cuales se describirá el
+utilizado.<br />
+      <br />
+&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;"> a) Secuencia de dos
+fases activas (full step) .</span><br />
+&nbsp;&nbsp;&nbsp; b) Secuencia de una fase activa (excitación por onda
+wave).<br />
+&nbsp; &nbsp; c) Secuencia de medio paso (half step).<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<small style="font-weight: bold;"><br />
+</small><span style="font-weight: bold;">Secuencia de dos fases activas
+(full step)</span><br />
+<br />
+Esta secuencia se caracteriza por que ambas fases están siempre
+activadas. El movimiento del rotor se consigue con el cambio de
+polaridad en la corriente que circula por los bobinados de las fases.
+La inversión del sentido de giro responde a la inversión de la
+secuencia de excitación.<br />
+<br />
+<div style="text-align: center;"><img style="width: 684px; height: 237px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:03:41.png" /><br />
+</div>
+<br />
+Recordar que entre cada paso (fila) hay que esperar un determinado
+tiempo para establecer los siguientes valores,.<br />
+Este tiempo como mínimo es de 2 ms (0,002 segundo ) fundamental para
+obtener la suficiente fuerza de torque requerido para el mecanizado de
+los ejes X e Y.<br />
+<br />
+<table style="text-align: left; width: 898px; font-weight: bold; height: 98px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Si
+se sigue la secuencia del paso 1 hasta el 4 nuestro motor habrá
+realizado 4 pasos hacia la derecha , para que gire al sentido
+contrario, ha de realizar la secuencia exactamente al revezo (paso 4
+hasta el paso 1) . Como el motor P-P que utilizamos es un motor bipolar
+sus paso son de ángulos muy cortos en este caso el ángulo de avance por
+paso es de 1. 8o, osea se necesitan 200 pasos para un giro de 360o o
+que es lo mismo 50 secuencias de pasos.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<hr style="width: 100%; height: 2px;" /><br />
+<div style="text-align: center; font-weight: bold;"><big>
+PUERTO PARALELO.<br />
+<br />
+</big>
+<div style="text-align: left;"><small><span style="font-weight: bold;"><span style="font-weight: bold;" /></span></small><span style="font-weight: normal;">Los ordenadores PC han estandarizado un
+tipo de interfaz para la comunicación con la</span><span style="font-weight: normal;"> impresora, conocida normalmente como
+CENTRONICS. Esta interfaz es capaz de enviar</span><span style="font-weight: normal;"> caracteres a la impresora de forma
+paralelo. Cada carácter está codificado en un byte, del</span><span style="font-weight: normal;"> cuál cada bit se transmite por un
+terminal diferente. Existen otros terminales que</span><span style="font-weight: normal;"> conectan ordenador e impresora, que
+sirven para intercambiar información de control y de</span><span style="font-weight: normal;"> estado, a fin de implementar un sencillo
+protocolo.</span><br />
+<br style="font-weight: normal;" />
+<span style="font-weight: normal;">Para realizar esta interfaz, los PCs
+disponen de unos elementos hardware específicos,denominados puertos de
+impresora o también puertos paralelo.</span><br />
+<br />
+<span style="font-weight: normal;">En un PC pueden instalarse varios de
+estos puertos que se distinguen entre sí con los nombres LPT1, LPT2 y
+LPT3 (en algunos casos también LPT4). Todos ellos son idénticos, salvo
+que tienen asignadas diferentes direcciones en el mapa de
+entrada/salida.</span><br />
+<br />
+<table style="text-align: left; width: 899px; height: 26px; font-weight: normal;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Las comunicaciones en paralelo
+se realizan mediante la transferencia simultánea de todos los bits que
+constituyen el dato (byte o palabra). Presentan la ventaja de que la
+transmisión puede ser más rápida. Sin embargo, las comunicaciones en
+paralelo no pueden ser implementadas para grandes distancias debido a
+que no es viable la conexión física de todas las líneas necesarias.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<span style="font-weight: normal;">Cada uno de estos puertos ocupa tres
+direcciones del mapa de E/S:</span><br />
+<br />
+<span style="font-weight: normal;"><span style="font-weight: bold;">Puerto
+de Datos:</span> De 8 bits, es donde la CPU escribe los datos que se
+envían a la impresora (caracteres).</span><br />
+<br style="font-weight: normal;" />
+<span style="font-weight: normal;"><span style="font-weight: bold;">Puerto
+de Estado: </span>Registro
+de 8 bits de donde la CPU puede conocer diversos aspectos del estado de
+la impresora (apagada, sin papel, etc). Se usan sólo 5 de los 8 bits.</span><br />
+<br style="font-weight: bold;" />
+<span style="font-weight: normal;"><span style="font-weight: bold;">Puerto
+de Control:</span> Registro de 8 bits donde la CPU puede escribir
+diversas señales que</span><span style="font-weight: normal;"> reconoce
+la impresora (validación de datos, inicialización, etc). Se usan 4 bits.</span><br />
+<br />
+<span style="font-weight: normal;">Estos tres registros ocupan
+posiciones consecutivas, por lo que basta con especificar la primera de
+ellas. El puerto de datos será el puerto base.</span><br />
+<br style="font-weight: normal;" />
+<span style="font-weight: normal;">Las direcciones del mapa de memoria
+de E/S en las que se suelen colocar los puertos paralelos son:</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 611px; height: 173px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:11:46.png" /><br />
+<br />
+<div style="text-align: left;"><span style="font-weight: normal;">La
+norma Centronics hace referencia a las características de la conexión
+entre un interface de puerto paralelo y una impresora. Las líneas son
+latcheadas, esto es, mantienen siempre el último valor establecido en
+ellas mientras no se cambien expresamente y los niveles de tensión y de
+corriente coinciden con los niveles de la lógica TTL, cuyos valores
+típicos son:</span><br style="font-weight: normal;" />
+<br style="font-weight: normal;" />
+<span style="font-weight: normal;">-Tensión de nivel alto: 5 V</span><br />
+<span style="font-weight: normal;">-Tensión de nivel bajo: 0 v.</span><br style="font-weight: normal;" />
+<span style="font-weight: normal;">-Intensidad de salida máxima: 2.6 mA.</span><br style="font-weight: normal;" />
+<span style="font-weight: normal;">-Intensidad de entrada máxima: 24 mA.</span><br />
+<br />
+<span style="font-weight: normal;">La norma Centronics establece el
+nombre y las características de 36 líneas eléctricas para la conexión
+entre el PC y la impresora.</span><br />
+</div>
+</div>
+<br />
+<table style="text-align: left; width: 898px; height: 26px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: normal;">Como
+estamos basando nuestro sistema para algo muy distinto a una impresora
+no vamos a utilizar los nombre que proporciona la norma Centronics para
+lo hilos de los buses del puerto paralelo , al igual que el nombre
+“puerto de impresora” .</span><br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;<br />
+<div style="text-align: center;">Aspecto físico del Conector DB 25
+hembra .<br />
+<br />
+<img style="width: 277px; height: 72px;" alt="x" src="driver/images%20%281%29.jpg" /><br />
+</div>
+<br />
+<div style="text-align: center;">Descripción.<br />
+<br />
+<img style="width: 400px; height: 212px;" alt="x" src="IMAGENES/paralelo%205.PNG" /><br />
+<div style="text-align: left;"><br />
+El Bus de Datos<br />
+<br style="font-weight: normal;" />
+<span style="font-weight: normal;">Generalmente es sólo de salida, pues
+se diseñó para enviar caracteres a la impresora.</span><span style="font-weight: normal;"> Actualmente este puerto es
+bidireccional. La correspondencia entre los bits del registro de</span><span style="font-weight: normal;"> datos y las señales presentes en el
+conector DB25 del exterior es:</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 804px; height: 257px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:09:15.png" /><br />
+<br />
+</div>
+El Bus de Estado<br />
+&nbsp;<span style="font-weight: normal;">Está
+destinado a la lectura del estado de las líneas de interfaz con la
+impresora. La señal del bit 7 es invertida antes de llegar al registro.
+La correspondencia entre los bits del registro de estado y las señales
+presentes en el conector DB25 del exterior es:</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 771px; height: 278px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:09:26.png" /><br />
+<br />
+</div>
+El Bus de Control<br />
+<br />
+<span style="font-weight: normal;">Este esta destinado a la escritura
+de comandos sobre la impresora. Las</span><span style="font-weight: normal;"> señales de bit 3, 1, y 0 son invertidas
+antes de llegar a los correspondientes terminales de</span><span style="font-weight: normal;"> conector externo. El bit 4 no es una
+señal que corresponda a alguno de los terminales de</span><span style="font-weight: normal;"> la interfaz Centronics. Se trata de un
+flag que habilita o prohíbe la generación de la señal</span><span style="font-weight: normal;"> del bit 4 cuando se activa la señal del
+bit 6 del puerto de estado . Las rutinas del BIOS que</span><span style="font-weight: normal;"> se ocupan de la impresora no utilizan
+esta interrupción. La correspondencia entre los bits</span><span style="font-weight: normal;"> del registro de control y las señales
+presentes en el conector DB25 del exterior es:</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 769px; height: 165px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:09:31.png" /><br style="font-weight: normal;" />
+</div>
+</div>
+</div>
+<div style="text-align: center;">Principio de funcionamiento del driver.<br />
+</div>
+<br />
+Lectura del bus de Estado.<br />
+<br style="font-weight: normal;" />
+<span style="font-weight: normal;">Lectura, entrada de un byte (solo se
+utilizan los 5 mas significativos) por los pines 11, 10, 12, 13 y 15.
+La lectura del bus de estado arrojará un número decimal
+correspondiente al byte que este ingresando. Suponiendo que la lectura
+del puerto de estado devuelve el numero decimal 170, el equivalente en
+binario es 10101010. De estos 8 bits, como se ha dicho, nos interesan
+los 5 mas significativos.</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 860px; height: 145px;" alt="x" src="driver/1-.png" /><br style="font-weight: normal;" />
+</div>
+</div>
+</div>
+<div style="text-align: center;">
+<div style="text-align: left;"><a href="#" onclick="subir();return false" title="Ir Arriba"><img style="position: fixed; bottom: 0pt; right: 0pt;" src="icon_top.png" border="0" /> </a><br />
+<br />
+Ahora, a simple vista, podemos comprender que ese valor de 170 que se
+leyó, indica que por el pin11 hay un nivel alto, por el pin 10 un nivel
+bajo, por el pin 12 un nivel alto, por el pin 13 un nivel bajo y por el
+pin 15 un nivel alto.<br />
+Para determinar el valor de cada pin en particular es necesario
+realizar un enmascaramiento de bits. El enmascaramiento de bits
+consiste en combinar un valor binario con otro para aislar los bits que
+nos interesan. Para determinar el valor del bit7<br />
+(pin11) realizamos la siguiente operación:<br />
+<br />
+<div style="text-align: center;"><img style="width: 911px; height: 279px;" alt="x" src="driver/2.png" /><br />
+</div>
+</div>
+<div style="text-align: left;"><br />
+El resultado es 128, lo cual indica la presencia de un 1 en el bit 7.
+Vemos el caso del bit 6.<br />
+<br />
+<div style="text-align: center;"><img style="width: 907px; height: 305px;" alt="x" src="driver/3.png" /><br />
+</div>
+<br />
+El resultado es cero, lo cual indica la presencia de un cero en el bit
+6. Teniendo en cuenta el enmascaramiento de bits, se puede programar la
+lectura del puertode estado cada 20 milisegundos, es decir 0.02
+segundos.<br />
+<br />
+<hr style="width: 100%; height: 2px;" /><br />
+<span style="font-weight: bold;">Gambas3- Haciendo uso del Puerto
+paralelo bus de Datos .</span><br style="font-weight: bold;" />
+<span style="font-weight: bold;">Ejemplo :</span><br />
+<br />
+El valor de salida es un byte, cuyo rango posible es de 0 a 255. Estos
+valores están expresados en sistema decimal. Al convertirlos en binario
+tendremos una idea de cuales pines recibirá un nivel alto y cuales un
+nivel bajo. Si se desea activar todas las salidas, el numero binario es
+11111111, es decir, sale un 1 por cada uno de los pines. Si convertimos
+el binario 11111111 a decimal obtenemos el número 255, este valor es el
+que debemos escribir en el puerto de datos. El código para hacerlo se
+observa a continuación:<br />
+<br />
+<div style="text-align: center;"><img style="width: 863px; height: 266px;" alt="x" src="driver/4.png" /><br />
+<br />
+<div style="text-align: left;"><span style="font-weight: bold;">Secuencia
+para el control de Motor X .</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 779px; height: 212px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:10:00.png" /><br />
+</div>
+<br />
+<span style="font-weight: bold;">Secuencia para el control de Motor Y .</span><br />
+<br />
+<div style="text-align: center;"><img style="width: 778px; height: 219px;" alt="" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:12:06.png" /><br />
+</div>
+<br />
+Si sumamos las dos secuencias binarias (expresadas de forma decimal),y
+la escribimos en las salidas del puerto paralelo ,logramos hacer girar
+los dos Motores “X” y “Y” ,en el mismo instante ,a la misma velocidad,
+el ancho de pulso se vera limitado a ser el mismo para los dos motores
+, lo que nos limita a crear diferencias de velocidad de giro entre ambos<br />
+motores .<br />
+<br />
+</div>
+</div>
+<div style="text-align: center;"><img style="width: 779px; height: 206px;" alt="" src="driver/xy.png" /><br />
+</div>
+<br />
+Si requerimos que los motores “X” e “Y” , inicien y terminen al mismo
+instante pero con diferencia en el numero de giros ,en teoría podríamos
+regular la duración ,”Ancho de pulso de pasos por motor ” . Lo que
+logramos variar la velocidad de avance compensando la diferencia en la
+Sumatoria de pasos .<br />
+&nbsp;<br />
+<span style="font-weight: bold;">Ejemplo:</span><br />
+<br />
+</div>
+</div>
+</div>
+<big><img style="width: 779px; height: 506px;" alt="" src="driver/Captura%20de%20pantalla%20de%202014-07-29%2016:28:25.png" /></big><br />
+<div style="text-align: left;"><br />
+Si deseamos realizar la siguiente diagonal .<br />
+<br />
+<div style="text-align: center;"><img style="width: 395px; height: 240px;" alt="x" src="IMAGENES/Captura%20de%20pantalla%20de%202014-07-17%2014:56:23.png" /><br />
+<div style="text-align: left;"><br />
+Pasamos los centímetros de X e Y, a giros que tendran que realizar los
+motor de dichas coodenadas :<br />
+<br />
+<div style="text-align: center;">Coordenadas X = 6 cm<br />
+Coordenadas Y = 3 cm<br />
+<br />
+GMx = Cmv * Coordenada X<br />
+GMy = Cmv * Coordenada Y<br />
+<br />
+GMx = 42<br />
+GMy = 21<br />
+<br />
+<span style="text-decoration: underline;">La suma total de pasos que
+realiza Mx.</span><br />
+<br />
+∑ Px = GMx * PG<br />
+42 * 200 = 8400<br />
+<br />
+<table style="text-align: left; width: 125px; height: 28px; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">∑ Px= 8400 Px</td>
+    </tr>
+  </tbody>
+</table>
+<br style="text-decoration: underline;" />
+<span style="text-decoration: underline;">Suma total de pasos que
+realza My.</span><br />
+<br />
+∑ Py = GMy * PG<br />
+21 * 200 = 4200<br />
+<br />
+<table style="text-align: left; width: 125px; margin-left: auto; margin-right: auto; height: 28%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">∑Py = 4200 Py<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<br />
+&gt; Si GMx &gt; GMy Asignamos.<br />
+Tpx == TpMin<br />
+&gt; de lo contrario.<br />
+&nbsp;&nbsp;&nbsp; Tpy == TpMin<br />
+<br style="text-decoration: underline;" />
+<span style="text-decoration: underline;">En este caso, vamos a obtener
+Tpx .</span><br />
+<br />
+∑ Tpx = 8400 * TpMin<br />
+∑ Tpx = 16800 ms<br />
+<br />
+<span style="text-decoration: underline;">Decimos que :</span><br />
+<br />
+Tpy = ∑ Tpx / ∑ Py<br />
+<br />
+Tpy = 16800/ 4200<br />
+<br />
+Tpy = 4 ms<br />
+<br />
+∑ Tpy = Tpy * ∑ Py<br />
+<br />
+∑ Tpy = 4 * 4200 = 16800 ms<br />
+<br style="text-decoration: underline;" />
+<span style="text-decoration: underline;">Resultado final :</span><br />
+<br />
+<table style="text-align: left; width: 125px; margin-left: auto; margin-right: auto; height: 28%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">∑ Tpy = ∑ Tpx</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+(16,8 segundo en realizar la diagonal del gráfico)<br />
+<br />
+Esta formula resuelve el problema , pero lamentablemente no puede
+llevarse a lapractica , ya que se requiere la ejecución de 2 procesos
+al mismo tiempo , “Multi-hilo”Por limitaciones aparentemente de
+Hardware del computador , no se puede resolver este problema ,ya que al
+ejecutar las funciones en procesos distintos ,se intercalan .<br />
+<div style="text-align: left;"><br />
+<span style="font-weight: bold;">Solución :</span><br />
+<br />
+Como solución se implementa el siguiente método : <br />
+Una vez obtenido el numero de giro y dirección de Mx y My se prosigue
+con la generacion de dos arreglos , a los cuales llamaremos “ArregloX”
+y “ArregloY” . cada arreglo se genera de forma independiente uno para
+controlar cada motor . Estos<br />
+arreglo contienen secuencias para la activación de las bobinas en modo
+full step , los datos son valores decimales para la escritura en el bus
+de datos del puerto paralelo. Cada arreglo varia por el sentido de giro
+que tenga que realizar el motor y por la cantidad de pasos.<br />
+El arreglo mas corto se completa hasta igualarse al mas largo
+repitiendo el ultimo valor de del paso anterior , y si esta se repite
+por mas de 15 veces, continua completando con valores iguales a 0 .La
+secuencia siempre se mantiene uniforme y ordenada .<br />
+Para finalizar se suman los valores entre “ArregloX” y “ArregloY” . y
+se genera un tercer arreglo que llamaremos “ArregloXandY” ,este ultimo
+arreglo es leído secuencialmente y el valor obtenido por el puntero de
+lectura es establecido en el bus de datos del puerto paralelo durante 1
+ms y luego pasa al siguiente hasta finalizar. Como resultado se ajusta
+los tiempos de los pasos según los valores del arreglo ,el mínimo
+denominador del tiempo es 1 ms, los pasos de un motor pueden ser de mas
+duración que el otro . O por consiguiente si este tiempo supera los los
+15 ms se apaga hasta el momento de seguir con<br />
+una nueve secuencia , esto de debido a que el motor estancado en una
+posición genera un sobrecargar que pondrá fin al ( IC dual H brige
+descrito mas adelante.)<br />
+<br />
+En el siguiente ejemplo se expresa la idea .<br />
+<br />
+<span style="font-weight: bold;">Ejemplo :</span><br />
+<br />
+Mx realiza 2 pasos mientras que My realiza 3 pasos . Esto es
+equivalente a que Mx realiza un giro de 3,6o hacia la derecha mientras
+que My gira 5,4 o de igual sentido de giro que Mx , este procedimiento
+es detallado con una secuencia pequeña debido a razones obvias de
+espacio (los arreglos pueden ser muy largos .)<br />
+<br />
+<div style="text-align: left;"><img style="width: 725px; height: 922px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-26%2023:16:57.png" /><br />
+</div>
+</div>
+<br />
+<big style="font-weight: bold;">A continuación se presentaran diagramas
+del las funciones elementales del<br />
+software driver .<br />
+<br />
+</big>
+<div style="text-align: left;"><big style="font-weight: bold;">&nbsp;
+1-&nbsp; Verificar estados de los sensores .</big><br />
+&nbsp;&nbsp;&nbsp;&nbsp; <br />
+&nbsp;&nbsp; <big style="font-weight: bold;">2-&nbsp; Control del Eje
+Z.</big><br />
+<br />
+&nbsp;&nbsp; <big style="font-weight: bold;">3- Accionar Motores P-P
+de los Ejes X e Y.</big><br />
+<br />
+<big><span style="font-weight: bold;">&nbsp; 4- Proceso de
+inicializacion&nbsp; (se realiza al iniciar un nuevo trábajo de corte).</span><br style="font-weight: bold;" />
+</big><br />
+<br />
+</div>
+<big style="font-weight: bold;"><br />
+<br />
+<img style="width: 742px; height: 1058px;" alt="x" src="driver/Sensores.jpg" /><br />
+<br />
+<img style="width: 681px; height: 678px;" alt="x" src="driver/Eje%20Z.jpg" /><br />
+<br />
+<br />
+<br />
+<img style="width: 680px; height: 643px;" alt="x" src="driver/Control%20de%20Mx%20y%20My%20.jpg" /><br />
+<br />
+<img style="width: 724px; height: 1036px;" alt="x" src="driver/Inicialilzacion.jpg" /><br />
+<br />
+</big>
+<hr style="width: 100%; height: 2px;" /><big style="font-weight: bold;"><br />
+Interfaz gráfica del software controlador <br />
+<br />
+<br />
+<br />
+</big>
+<div style="text-align: left;">Para finalizar este apartado se
+presentaran 2 print de pantalla, la primera es la interfaz gráfica,
+donde se puede hacer un seguimiento en tiempo real de los procesos de
+corte .<small><br />
+</small>&nbsp;En ella se observan el porcentaje de la realización del
+corte de las piezas, el tiempo restante , el margen de error individual
+de&nbsp; cada linea ,entre otros datos que se podrán observar, el
+segundo gráfico es la interfaz donde se puede controlar manualmente los
+ejes&nbsp;y verificar el estado actual de los sensores , esto es muy
+útil a la hora de realizar un chequeo del Router Cnc. <br />
+</div>
+<big style="font-weight: bold;"><br />
+<br />
+<br />
+</big>
+<div style="text-align: left;"><big style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-decoration: underline;"> Monitor de proceso de corte :</span></big><br />
+<br />
+<img style="width: 911px; height: 663px;" alt="x" src="driver/Captura%20de%20pantalla%20de%202014-07-15%2021_22_50.png" /><br />
+</div>
+<big style="font-weight: bold;"><br />
+<span style="text-decoration: underline;">Control manual del router Cnc
+:</span><br />
+<br />
+<img style="width: 911px; height: 644px;" alt="x" src="driver/Ctrl%20manual.png" /><br />
+</big></div>
+</div>
+</div>
+</div>
+<div style="text-align: center; font-weight: bold;"><big>
+</big></div>
+</div>
+<div style="text-align: center; font-weight: bold;"><big>
+</big></div>
+</div>
+<br />
+</div>
+<div class="clear">
+</div>
+<div id="footer">
+2013 - 2014 © Autor : Denis German Gimenez<br />
+<br />
+<p id="credits">CADCNC V: 1.0<br />
+<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
